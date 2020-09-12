@@ -1,8 +1,8 @@
 import { CssBaseline, NoSsr, useMediaQuery } from "@material-ui/core";
 import {
-    createMuiTheme,
-    MuiThemeProvider,
-    StylesProvider
+  createMuiTheme,
+  MuiThemeProvider,
+  StylesProvider,
 } from "@material-ui/core/styles";
 import "fontsource-open-sans";
 import "fontsource-permanent-marker";
@@ -46,12 +46,14 @@ const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
             fontFamily:
               "Permanent Marker, Open Sans, Roboto, Helvetica, Arial, sans-serif",
             textTransform: "uppercase",
+            fontSize: "4rem",
           },
           h2: {
             fontFamily:
               "Permanent Marker, Open Sans, Roboto, Helvetica, Arial, sans-serif",
             textTransform: "uppercase",
             color: "#A11A3D",
+            fontSize: "2.5rem",
           },
         },
       }),
