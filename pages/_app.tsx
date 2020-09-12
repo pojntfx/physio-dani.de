@@ -4,8 +4,7 @@ import {
   MuiThemeProvider,
   StylesProvider,
 } from "@material-ui/core/styles";
-import "fontsource-open-sans";
-import "fontsource-permanent-marker";
+import "fontsource-lato";
 import { AppProps } from "next/app";
 import { useMemo } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
@@ -41,19 +40,32 @@ const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
           },
         },
         typography: {
-          fontFamily: "Open Sans, Roboto, Helvetica, Arial, sans-serif",
+          fontFamily: "Lato, Roboto, Helvetica, Arial, sans-serif",
           h1: {
-            fontFamily:
-              "Permanent Marker, Open Sans, Roboto, Helvetica, Arial, sans-serif",
+            fontStyle: "normal",
             textTransform: "uppercase",
-            fontSize: "3.5rem",
+            fontSize: "3rem",
+            fontWeight: 900,
+            letterSpacing: "0.05rem",
           },
           h2: {
-            fontFamily:
-              "Permanent Marker, Open Sans, Roboto, Helvetica, Arial, sans-serif",
+            fontStyle: "normal",
             textTransform: "uppercase",
             color: "#A11A3D",
-            fontSize: "2.5rem",
+            fontSize: "2rem",
+            fontWeight: 900,
+            letterSpacing: "0.05rem",
+          },
+          body1: {
+            fontStyle: "normal",
+          },
+          body2: {
+            fontStyle: "italic",
+          },
+          button: {
+            fontStyle: "normal",
+            textTransform: "uppercase",
+            fontWeight: 700,
           },
         },
       }),
