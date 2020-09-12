@@ -2703,10 +2703,15 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-fontsource-roboto@^3.0.3:
+fontsource-open-sans@^3.0.3:
   version "3.0.3"
-  resolved "https://registry.yarnpkg.com/fontsource-roboto/-/fontsource-roboto-3.0.3.tgz#99c312babeabce22b3e933b3edf2951d4508f4f7"
-  integrity sha512-kfsC9qAP6XhwnSDAhg2lhWeaUJfLGXZh7GcLxFiz/4lXdkV2pVhWv2Xp9ES3b3BHdc9UuPrWXXLOphzHIStcOw==
+  resolved "https://registry.yarnpkg.com/fontsource-open-sans/-/fontsource-open-sans-3.0.3.tgz#040e815c19e3fbcaa529e51061a6efcff42b3268"
+  integrity sha512-W5SIXP3OnwZOqXMevcIPSTRkbKJHc7rJCKxKr3rfii7A1dIdgrtIuc3WT5kIcdvBj2VB/AS206I4p5uPcOnRwg==
+
+fontsource-permanent-marker@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/fontsource-permanent-marker/-/fontsource-permanent-marker-3.0.9.tgz#a392a7fb806aa78a503c3ab362b82e6d0a6ced87"
+  integrity sha512-8Qk9sMPjTcfajFh4NKcgVi8S1dKexlkMF/I4sLVrk6nIvjH0RugH1gx8+Xzs753W3GIrhrXs01BbfwmJG7ldlA==
 
 for-in@^1.0.2:
   version "1.0.2"

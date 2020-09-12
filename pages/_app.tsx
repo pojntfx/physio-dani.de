@@ -4,7 +4,8 @@ import {
   MuiThemeProvider,
   StylesProvider,
 } from "@material-ui/core/styles";
-import "fontsource-roboto";
+import "fontsource-open-sans";
+import "fontsource-permanent-marker";
 import { AppProps } from "next/app";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
@@ -21,6 +22,20 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: "#333333",
+    },
+  },
+  typography: {
+    fontFamily: "Open Sans, Roboto, Helvetica, Arial, sans-serif",
+    h1: {
+      fontFamily:
+        "Permanent Marker, Open Sans, Roboto, Helvetica, Arial, sans-serif",
+      textTransform: "uppercase",
+    },
+    h2: {
+      fontFamily:
+        "Permanent Marker, Open Sans, Roboto, Helvetica, Arial, sans-serif",
+      textTransform: "uppercase",
+      color: "#A11A3D",
     },
   },
 });
