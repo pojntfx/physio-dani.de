@@ -1,6 +1,6 @@
-import { Button, Typography, Box, Container, Toolbar } from "@material-ui/core";
-import styled from "styled-components";
+import { Box, Button, Container, Toolbar, Typography } from "@material-ui/core";
 import Link from "next/link";
+import styled from "styled-components";
 
 const Nav = styled(Box)`
   background: ${({ theme }) => theme.palette.background.paper};
@@ -10,11 +10,13 @@ const NavButton = styled(Button)`
   font-family: ${({ theme }) => theme.typography.h1.fontFamily};
   text-transform: ${({ theme }) => theme.typography.h1.textTransform};
   margin-right: ${({ theme }) => theme.spacing(1)}px;
+  font-size: 1.05rem;
 `;
 
 const NavLogo = styled.img`
   max-height: ${({ theme }) => theme.spacing(14)}px;
   margin-left: auto;
+  cursor: pointer;
 `;
 
 const Home = () => (

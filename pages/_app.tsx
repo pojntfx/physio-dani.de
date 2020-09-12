@@ -1,17 +1,28 @@
 import { CssBaseline, NoSsr, useMediaQuery } from "@material-ui/core";
 import {
-  createMuiTheme,
-  MuiThemeProvider,
-  StylesProvider,
+    createMuiTheme,
+    MuiThemeProvider,
+    StylesProvider
 } from "@material-ui/core/styles";
 import "fontsource-open-sans";
 import "fontsource-permanent-marker";
 import { AppProps } from "next/app";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { useMemo } from "react";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+body {
+  background-image: url("/background.jpg");
+  background-position: 50%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 
+  #__next {
+      min-height: 100vh;
+      background: ${({ theme }: any) => theme.palette.background.paper}d0;
+  }
+}
 `;
 
 const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
