@@ -86,21 +86,19 @@ const CTAs = styled.div`
   }
 `;
 
+const SplitImageWrapper = styled(Grid)`
+  ${({ theme }) => theme.breakpoints.up("sm")} {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+`;
+
 const SplitImage = styled.img`
   width: 100%;
   margin-bottom: -5px;
-
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    margin-bottom: ${({ theme }) => theme.spacing(2)}px;
-  }
 `;
 
-const SplitText = styled(Grid)`
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    margin-top: ${({ theme }) => theme.spacing(2)}px;
-    margin-bottom: ${({ theme }) => theme.spacing(2)}px;
-  }
-`;
+const SplitText = styled(Grid)``;
 
 const Home = () => {
   const theme = useTheme();
@@ -229,7 +227,7 @@ const Home = () => {
 
       <PrimaryBox component="section" id="mehr-ueber-mich">
         <Container maxWidth="lg">
-          <Grid container alignItems="center">
+          <Grid container alignItems="center" spacing={3}>
             <SplitText item sm={12} md={8}>
               <Typography variant="h2" gutterBottom>
                 Über mich
@@ -254,9 +252,9 @@ const Home = () => {
               </Typography>
             </SplitText>
 
-            <Grid item sm={12} md={4}>
+            <SplitImageWrapper item sm={12} md={4}>
               <SplitImage alt="Behandlungszimmer" src="/room.jpg" />
-            </Grid>
+            </SplitImageWrapper>
           </Grid>
         </Container>
       </PrimaryBox>
