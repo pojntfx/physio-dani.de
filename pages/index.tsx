@@ -32,6 +32,11 @@ const NavButton = styled(Button)`
 
 const NavLogo = styled.img`
   max-height: ${({ theme }) => theme.spacing(14)}px;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    max-height: ${({ theme }) => theme.spacing(8)}px;
+  }
+
   margin-left: auto;
   cursor: pointer;
 `;
@@ -49,6 +54,11 @@ const Avatar = styled.img`
   border-radius: 50%;
   padding: ${({ theme }) => theme.spacing(4)}px;
   margin: ${({ theme }) => theme.spacing(6)}px 0;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    padding: ${({ theme }) => theme.spacing(7)}px;
+    margin: 0;
+  }
 `;
 
 const Highlight = styled.span`
@@ -63,6 +73,10 @@ const Name = styled(Typography)`
 const CTAs = styled.div`
   > *:not(:last-child) {
     margin-right: ${({ theme }) => theme.spacing(2)}px;
+
+    ${({ theme }) => theme.breakpoints.down("sm")} {
+      margin-bottom: ${({ theme }) => theme.spacing(2)}px;
+    }
   }
 
   margin-top: ${({ theme }) => theme.spacing(2)}px;
@@ -182,7 +196,7 @@ const Home = () => {
                 color="primary"
                 href="#mehr-ueber-mich"
               >
-                Mehr zu mir
+                Mehr über mich
               </Button>
               <Button
                 disableElevation
