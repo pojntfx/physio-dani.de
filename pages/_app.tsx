@@ -38,6 +38,7 @@ const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
           secondary: {
             main: "#333333",
           },
+          background: prefersDarkMode ? {} : { paper: "#ffffff" },
         },
         typography: {
           fontFamily: "Lato, Roboto, Helvetica, Arial, sans-serif",
@@ -51,7 +52,7 @@ const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
           h2: {
             fontStyle: "normal",
             textTransform: "uppercase",
-            color: "#A11A3D",
+            color: prefersDarkMode ? "#ffffff" : "#A11A3D",
             fontSize: "2rem",
             fontWeight: 900,
             letterSpacing: "0.05rem",
