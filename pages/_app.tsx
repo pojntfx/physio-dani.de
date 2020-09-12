@@ -46,7 +46,7 @@ const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
             fontFamily:
               "Permanent Marker, Open Sans, Roboto, Helvetica, Arial, sans-serif",
             textTransform: "uppercase",
-            fontSize: "4rem",
+            fontSize: "3.5rem",
           },
           h2: {
             fontFamily:
