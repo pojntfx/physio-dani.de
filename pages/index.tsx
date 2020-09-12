@@ -62,7 +62,7 @@ const Avatar = styled.img`
 `;
 
 const Highlight = styled.span`
-  color: ${({ theme }) => theme.palette.primary.main};
+  color: ${({ theme }) => theme.typography.h2.color};
   font-weight: ${({ theme }) => theme.typography.fontWeightBold};
 `;
 
