@@ -18,7 +18,7 @@ import Link from "next/link";
 import { useState } from "react";
 import styled from "styled-components";
 
-const Nav = styled(Box)`
+const PrimaryBox = styled(Box)`
   background: ${({ theme }) => theme.palette.background.paper};
 `;
 
@@ -86,6 +86,22 @@ const CTAs = styled.div`
   }
 `;
 
+const SplitImage = styled.img`
+  width: 100%;
+  margin-bottom: -5px;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    margin-bottom: ${({ theme }) => theme.spacing(2)}px;
+  }
+`;
+
+const SplitText = styled(Grid)`
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    margin-top: ${({ theme }) => theme.spacing(2)}px;
+    margin-bottom: ${({ theme }) => theme.spacing(2)}px;
+  }
+`;
+
 const Home = () => {
   const theme = useTheme();
   const navMenuFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -93,7 +109,7 @@ const Home = () => {
 
   return (
     <>
-      <Nav>
+      <PrimaryBox>
         <Container maxWidth="lg">
           <Toolbar disableGutters>
             {navMenuFullscreen ? (
@@ -111,7 +127,7 @@ const Home = () => {
                     <ListItem
                       button
                       component="a"
-                      href="#ueber-mich"
+                      href="#mehr-ueber-mich"
                       onClick={() => setNavMenuOpen(false)}
                     >
                       <SliderListItemText>Über mich</SliderListItemText>
@@ -149,7 +165,7 @@ const Home = () => {
               </>
             ) : (
               <>
-                <NavButton href="#ueber-mich">Über mich</NavButton>
+                <NavButton href="#mehr-ueber-mich">Über mich</NavButton>
                 <NavButton href="#erfahrung-und-qualifikationen">
                   Erfahrung und Qualifikationen
                 </NavButton>
@@ -168,7 +184,7 @@ const Home = () => {
             </Link>
           </Toolbar>
         </Container>
-      </Nav>
+      </PrimaryBox>
       <Container maxWidth="md">
         <Grid container alignItems="center">
           <Grid item sm={12} md={4}>
@@ -210,6 +226,40 @@ const Home = () => {
           </Grid>
         </Grid>
       </Container>
+
+      <PrimaryBox component="section" id="mehr-ueber-mich">
+        <Container maxWidth="lg">
+          <Grid container alignItems="center">
+            <SplitText item sm={12} md={8}>
+              <Typography variant="h2" gutterBottom>
+                Über mich
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                Ich bin Physiotherapeutin und habe mein staatliches Examen 1994
+                in Schwenningen absolviert.
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                Ich bin 1972 in Forbach geboren und in Mitteltal im schönen
+                Schwarzwald aufgewachsen; mein Weg bis hierher war teils
+                holprig. Trotz der vielen Aufgaben mit meinen 4 wunderbaren
+                Kindern habe ich aber nie die Liebe zur Physiotherapie verloren.
+                Durch ständige Fortbildungen und treue Patienten, konnte ich zum
+                Glück immer meiner Berufung folgen.
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                <Highlight>
+                  Dankbar bin ich all den Menschen, die mir ermöglichen meinen
+                  Traum der Eigenständigkeit weiter zu leben.
+                </Highlight>
+              </Typography>
+            </SplitText>
+
+            <Grid item sm={12} md={4}>
+              <SplitImage alt="Behandlungszimmer" src="/room.jpg" />
+            </Grid>
+          </Grid>
+        </Container>
+      </PrimaryBox>
     </>
   );
 };
