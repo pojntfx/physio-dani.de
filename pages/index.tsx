@@ -61,9 +61,12 @@ const Avatar = styled.img`
   }
 `;
 
-const Highlight = styled.span`
-  color: ${({ theme }) => theme.typography.h2.color};
+const Focus = styled.span`
   font-weight: ${({ theme }) => theme.typography.fontWeightBold};
+`;
+
+const Highlight = styled(Focus)`
+  color: ${({ theme }) => theme.typography.h2.color};
 `;
 
 const Name = styled(Typography)`
@@ -92,13 +95,6 @@ const SplitImageWrapper = styled(Grid)`
     padding-bottom: 0 !important;
   }
 `;
-
-const SplitImage = styled.img`
-  width: 100%;
-  margin-bottom: -5px;
-`;
-
-const SplitText = styled(Grid)``;
 
 const Home = () => {
   const theme = useTheme();
@@ -183,6 +179,7 @@ const Home = () => {
           </Toolbar>
         </Container>
       </PrimaryBox>
+
       <Container maxWidth="md">
         <Grid container alignItems="center">
           <Grid item sm={12} md={4}>
@@ -226,40 +223,127 @@ const Home = () => {
       </Container>
 
       <PrimaryBox component="section" id="mehr-ueber-mich">
-        <Container maxWidth="lg">
-          <Grid container alignItems="center" spacing={3}>
-            <SplitText item sm={12} md={8}>
-              <Typography variant="h2" gutterBottom>
-                Über mich
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                Ich bin Physiotherapeutin und habe mein staatliches Examen 1994
-                in Schwenningen absolviert.
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                Ich bin 1972 in Forbach geboren und in Mitteltal im schönen
-                Schwarzwald aufgewachsen; mein Weg bis hierher war teils
-                holprig. Trotz der vielen Aufgaben mit meinen 4 wunderbaren
-                Kindern habe ich aber nie die Liebe zur Physiotherapie verloren.
-                Durch ständige Fortbildungen und treue Patienten, konnte ich zum
-                Glück immer meiner Berufung folgen.
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                <Highlight>
-                  Dankbar bin ich all den Menschen, die mir ermöglichen meinen
-                  Traum der Eigenständigkeit weiter zu leben.
-                </Highlight>
-              </Typography>
-            </SplitText>
-
-            <SplitImageWrapper item sm={12} md={4}>
+        <SplitCollection>
+          <Container>
+            <RightSplit>
+              <SplitText>
+                <Typography variant="h2" gutterBottom>
+                  Über mich
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  Ich bin Physiotherapeutin und habe mein staatliches Examen
+                  1994 in Schwenningen absolviert.
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  Ich bin 1972 in Forbach geboren und in Mitteltal im schönen
+                  Schwarzwald aufgewachsen; mein Weg bis hierher war teils
+                  holprig. Trotz der vielen Aufgaben mit meinen 4 wunderbaren
+                  Kindern habe ich aber nie die Liebe zur Physiotherapie
+                  verloren. Durch ständige Fortbildungen und treue Patienten,
+                  konnte ich zum Glück immer meiner Berufung folgen.
+                </Typography>
+                <Typography variant="body1">
+                  <Highlight>
+                    Dankbar bin ich all den Menschen, die mir ermöglichen meinen
+                    Traum der Eigenständigkeit weiter zu leben.
+                  </Highlight>
+                </Typography>
+              </SplitText>
               <SplitImage alt="Behandlungszimmer" src="/room.jpg" />
-            </SplitImageWrapper>
-          </Grid>
-        </Container>
+            </RightSplit>
+          </Container>
+
+          <Container>
+            <LeftSplit>
+              <SplitImage
+                alt="Beispiel einer Boeger-Behandlung"
+                src="/boeger-2.jpg"
+              />
+              <SplitText>
+                <Typography variant="body1" gutterBottom>
+                  Als ich vor ein paar Jahren von einer Freundin/Kollegin auf
+                  die <Highlight>Boegertherapie</Highlight> aufmerksam wurde,
+                  wusste ich schnell: “Das ist voll mein Ding!”
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  Das bisherige Wissen vereint und erweitert, ein Teil meiner
+                  Gedanken endlich wissenschaftlich begründet. David Boeger hat
+                  für mich persönlich eine revolutionäre Therapie entwickelt, in
+                  einem perfekten Konstrukt bearbeitet und Kurse entstehen
+                  lassen, die dieses großartige Wissen weiter geben. Mit großer
+                  Freude wende ich diese speziellen Griffe an und staune
+                  gelegentlich selbst über den schnellen/sensationellen Erfolg.
+                </Typography>
+                <Typography variant="body1">
+                  <Focus>
+                    Den Menschen als Ganzes zu sehen - den Körper, die Psyche
+                    mit all den körperlichen und seelischen Narben, die so ein
+                    Leben hinterlässt finde ich ungeheuer wichtig und dazu nun
+                    eine Methode zu haben, dieses bearbeiten zu können, macht
+                    für mich eine Physiotherapie komplett.
+                  </Focus>
+                </Typography>
+              </SplitText>
+            </LeftSplit>
+          </Container>
+        </SplitCollection>
       </PrimaryBox>
     </>
   );
 };
+
+const LeftSplit = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: ${({ theme }) => theme.spacing(2)}px;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: minmax(20rem, auto) !important;
+  }
+`;
+
+const RightSplit = styled(LeftSplit)`
+  grid-template-columns: 2fr 1fr;
+`;
+
+const SplitImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const SplitText = styled.div`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.spacing(2)}px;
+  padding: ${({ theme }) => theme.spacing(4)}px;
+
+  &:last-child {
+    padding-right: 0;
+
+    ${({ theme }) => theme.breakpoints.down("sm")} {
+      padding: 0;
+      padding-bottom: ${({ theme }) => theme.spacing(2)}px !important;
+    }
+  }
+
+  &:first-child {
+    padding-left: 0;
+
+    ${({ theme }) => theme.breakpoints.down("sm")} {
+      padding: 0;
+      padding-top: ${({ theme }) => theme.spacing(2)}px !important;
+    }
+  }
+`;
+
+const SplitCollection = styled.div`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.spacing(4)}px;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    grid-gap: ${({ theme }) => theme.spacing(2)}px;
+  }
+`;
 
 export default Home;
