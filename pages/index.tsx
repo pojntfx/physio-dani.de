@@ -19,11 +19,11 @@ import {
 } from "@material-ui/core";
 import { TransitionProps } from "@material-ui/core/transitions/transition";
 import { Close, Menu } from "@material-ui/icons";
-import CookieConsent from "material-ui-cookie-consent";
+import dynamic from "next/dynamic";
+import Head from "next/head";
 import NextLink from "next/link";
 import { forwardRef, useState } from "react";
 import styled from "styled-components";
-import Head from "next/head";
 
 const PrimaryBox = styled(Box)`
   background: ${({ theme }) => theme.palette.background.paper};
@@ -243,12 +243,6 @@ const EventLeft = styled(DatePoint)`
   border-bottom-left-radius: 9999px;
 `;
 
-const SplitIframe = styled.iframe`
-  border: 0;
-  width: 100%;
-  height: 100%;
-`;
-
 const Transition = forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement },
   ref: React.Ref<unknown>
@@ -261,6 +255,11 @@ const Home = () => {
   const navMenuFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [imprintOpen, setImprintOpen] = useState(false);
+
+  const Map = dynamic(() => import("../components/Map"), {
+    ssr: false,
+    loading: () => <Typography variant="body1">Lade Karte ...</Typography>,
+  });
 
   return (
     <>
@@ -723,11 +722,7 @@ const Home = () => {
 
           <Container>
             <InvertedSplit>
-              <SplitIframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2643.4867266340975!2d8.361571315894011!3d48.50473353349582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4797315d3c67d9a5%3A0xc85b9643ed63101b!2sH%C3%B6ferk%C3%B6pfleweg%2042%2C%2072270%20Baiersbronn!5e0!3m2!1sen!2sde!4v1599966559126!5m2!1sen!2sde"
-                style={{ border: 0 }}
-                aria-hidden="false"
-              ></SplitIframe>
+              <Map />
 
               <InvertedSplitText>
                 <div>
@@ -763,7 +758,7 @@ const Home = () => {
                 © 2020 Daniela Burkhardt
               </NavButton>
               <NavButton onClick={() => setImprintOpen(true)}>
-                Impressum und Datenschutz
+                Impressum
               </NavButton>
 
               <Dialog
@@ -783,9 +778,7 @@ const Home = () => {
                     >
                       <Close />
                     </IconButton>
-                    <ImprintHeader variant="h6">
-                      Impressum und Datenschutz
-                    </ImprintHeader>
+                    <ImprintHeader variant="h6">Impressum</ImprintHeader>
                   </Toolbar>
                 </ImprintAppBar>
                 <ImprintContainer>
@@ -805,6 +798,28 @@ const Home = () => {
                     Telefax: 0170 4746795
                     <br />
                     E-Mail: physio-dani@web.de
+                  </p>
+                  <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+                  <p>
+                    Berufsbezeichnung: Staatl. gepr&uuml;fte Physiotherapeutin
+                    <br />
+                    Zust&auml;ndige Kammer: <br />
+                    Verliehen in: Baden-W&uuml;rttemberg
+                    <br />
+                    Es gelten folgende berufsrechtliche Regelungen: Die
+                    berufsrechtliche Regelung f&uuml;r den Berufsstand der
+                    Staatlich anerkannten Physiotherapeuten bildet das Gesetz
+                    &uuml;ber die Berufe in der Physiotherapie (= Masseur- und
+                    Physiotherapeutengesetz, MPhG) vom 26.05.1994.
+                    <br />
+                    Regelungen einsehbar unter:{" "}
+                    <Link
+                      href="http://www.gesetze-im-internet.de/mphg/BJNR108400994.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      http://www.gesetze-im-internet.de/mphg/BJNR108400994.html
+                    </Link>
                   </p>
                   <h2>
                     Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle
@@ -876,7 +891,7 @@ const Home = () => {
                   </p>
                   <p>
                     Quelle:{" "}
-                    <Link href="https://www.e-recht24.de">eRecht24</Link>
+                    <Link href="https://www.e-recht24.de">e-recht24.de</Link>
                   </p>
                 </ImprintContainer>
               </Dialog>
@@ -891,11 +906,6 @@ const Home = () => {
           </Toolbar>
         </Container>
       </PrimaryBox>
-
-      <CookieConsent
-        cookieName="cookieConsent"
-        message={`Diese Website verwendet Cookies – nähere Informationen dazu und zu Ihren Rechten als Benutzer finden Sie in unserer Datenschutzerklärung am Ende der Seite. Klicken Sie auf "Accept", um Cookies zu akzeptieren und direkt unsere Website besuchen zu können.`}
-      />
     </>
   );
 };
