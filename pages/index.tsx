@@ -263,6 +263,7 @@ const Home = () => {
           content="Staatlich geprüfte Physiotherapeutin & Heilpraktikerin im Bereich Physiotherapie."
         />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <meta name="theme-color" content={theme.palette.primary.main} />
       </Head>
       <PrimaryBox>
         <Container maxWidth="lg">
