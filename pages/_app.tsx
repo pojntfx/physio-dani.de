@@ -8,6 +8,7 @@ import "fontsource-lato";
 import { AppProps } from "next/app";
 import { useMemo } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const GlobalStyle = createGlobalStyle`
 body {
