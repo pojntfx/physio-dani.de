@@ -17,6 +17,7 @@ import {
 import { Menu } from "@material-ui/icons";
 import { useState } from "react";
 import styled from "styled-components";
+import NextLink from "next/link";
 
 const PrimaryBox = styled(Box)`
   background: ${({ theme }) => theme.palette.background.paper};
@@ -112,7 +113,7 @@ const RightSplit = styled(LeftSplit)`
 `;
 
 const InvertedSplit = styled(LeftSplit)`
-  grid-template-columns: 4fr 3fr;
+  grid-template-columns: 4fr 1fr;
   min-height: 30rem;
 `;
 
@@ -228,6 +229,12 @@ const EventLeft = styled(DatePoint)`
   border-bottom-left-radius: 9999px;
 `;
 
+const SplitIframe = styled.iframe`
+  border: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 const Home = () => {
   const theme = useTheme();
   const navMenuFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -301,13 +308,13 @@ const Home = () => {
                 </NavButton>
               </>
             )}
-            <Link href="#">
+            <NextLink href="#">
               <NavLogo
                 alt="Logo der Physiotherapie Daniela Burkhardt"
                 src="/logo.png"
                 loading="lazy"
               />
-            </Link>
+            </NextLink>
           </Toolbar>
         </Container>
       </PrimaryBox>
@@ -677,35 +684,43 @@ const Home = () => {
       </PrimaryBox>
 
       <PrimaryBox component="section" id="kontakt-und-anfahrt">
-        <Container>
-          <InvertedSplit>
-            <SplitImage
-              alt="Beispiel einer Boeger-Behandlung"
-              src="/boeger.jpg"
-            />
-            <InvertedSplitText>
-              <div>
-                <Typography variant="body1" gutterBottom>
-                  <Focus>Höferköpfleweg 42</Focus>
-                  <br />
-                  72270 Baiersbronn
-                </Typography>
-                <Typography variant="body1">
-                  <Focus>Telefon:</Focus>
-                  <Link href="tel:07442 50964">07442 50964</Link>
-                  <br />
-                  <Focus>Mobil:</Focus>{" "}
-                  <Link href="tel:0170 4746795">0170 4746795</Link>
-                  <br />
-                  <Focus>Email:</Focus>{" "}
-                  <Link href="mailto:physio-dani@web.de">
-                    physio-dani@web.de
-                  </Link>
-                </Typography>
-              </div>
-            </InvertedSplitText>
-          </InvertedSplit>
-        </Container>
+        <SplitCollection>
+          <Container>
+            <Typography variant="h2">Kontakt und Anfahrt</Typography>
+          </Container>
+
+          <Container>
+            <InvertedSplit>
+              <SplitIframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2643.4867266340975!2d8.361571315894011!3d48.50473353349582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4797315d3c67d9a5%3A0xc85b9643ed63101b!2sH%C3%B6ferk%C3%B6pfleweg%2042%2C%2072270%20Baiersbronn!5e0!3m2!1sen!2sde!4v1599966559126!5m2!1sen!2sde"
+                style={{ border: 0 }}
+                aria-hidden="false"
+              ></SplitIframe>
+
+              <InvertedSplitText>
+                <div>
+                  <Typography variant="body1" gutterBottom>
+                    <Focus>Höferköpfleweg 42</Focus>
+                    <br />
+                    72270 Baiersbronn
+                  </Typography>
+                  <Typography variant="body1">
+                    <Focus>Email:</Focus>{" "}
+                    <Link href="mailto:physio-dani@web.de">
+                      physio-dani@web.de
+                    </Link>
+                    <br />
+                    <Focus>Telefon:</Focus>{" "}
+                    <Link href="tel:07442 50964">07442 50964</Link>
+                    <br />
+                    <Focus>Mobil:</Focus>{" "}
+                    <Link href="tel:0170 4746795">0170 4746795</Link>
+                  </Typography>
+                </div>
+              </InvertedSplitText>
+            </InvertedSplit>
+          </Container>
+        </SplitCollection>
       </PrimaryBox>
     </>
   );
