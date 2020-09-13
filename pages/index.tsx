@@ -127,6 +127,7 @@ const RightSplit = styled(LeftSplit)`
 `;
 
 const InvertedSplit = styled(LeftSplit)`
+  grid-template-columns: 2fr 1fr;
   min-height: 30rem;
 `;
 
