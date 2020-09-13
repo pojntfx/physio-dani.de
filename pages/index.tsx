@@ -4,6 +4,7 @@ import {
   Container,
   Grid,
   IconButton,
+  Link,
   List,
   ListItem,
   ListItemText,
@@ -14,7 +15,6 @@ import {
   useTheme,
 } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
-import Link from "next/link";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -111,6 +111,11 @@ const RightSplit = styled(LeftSplit)`
   grid-template-columns: 2fr 1fr;
 `;
 
+const InvertedSplit = styled(LeftSplit)`
+  grid-template-columns: 4fr 3fr;
+  min-height: 30rem;
+`;
+
 const SplitImage = styled.img`
   width: 100%;
   height: 100%;
@@ -139,6 +144,13 @@ const SplitText = styled.div`
       padding-top: ${({ theme }) => theme.spacing(2)}px !important;
     }
   }
+`;
+
+const InvertedSplitText = styled.div`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.spacing(2)}px;
+  padding: ${({ theme }) => theme.spacing(4)}px;
+  align-items: center;
 `;
 
 const SplitCollection = styled.div`
@@ -662,6 +674,38 @@ const Home = () => {
             </RightSplit>
           </Container>
         </SplitCollection>
+      </PrimaryBox>
+
+      <PrimaryBox component="section" id="kontakt-und-anfahrt">
+        <Container>
+          <InvertedSplit>
+            <SplitImage
+              alt="Beispiel einer Boeger-Behandlung"
+              src="/boeger.jpg"
+            />
+            <InvertedSplitText>
+              <div>
+                <Typography variant="body1" gutterBottom>
+                  <Focus>Höferköpfleweg 42</Focus>
+                  <br />
+                  72270 Baiersbronn
+                </Typography>
+                <Typography variant="body1">
+                  <Focus>Telefon:</Focus>
+                  <Link href="tel:07442 50964">07442 50964</Link>
+                  <br />
+                  <Focus>Mobil:</Focus>{" "}
+                  <Link href="tel:0170 4746795">0170 4746795</Link>
+                  <br />
+                  <Focus>Email:</Focus>{" "}
+                  <Link href="mailto:physio-dani@web.de">
+                    physio-dani@web.de
+                  </Link>
+                </Typography>
+              </div>
+            </InvertedSplitText>
+          </InvertedSplit>
+        </Container>
       </PrimaryBox>
     </>
   );
