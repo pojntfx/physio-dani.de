@@ -257,11 +257,12 @@ const Home = () => {
     <>
       <Head>
         <title>Physiotherapie Daniela Burkhardt</title>
-        <meta name="author" content="Daniela Burkhardt"></meta>
+        <meta name="author" content="Daniela Burkhardt" />
         <meta
           name="description"
           content="Staatlich geprüfte Physiotherapeutin & Heilpraktikerin im Bereich Physiotherapie."
-        ></meta>
+        />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
       <PrimaryBox>
         <Container maxWidth="lg">
