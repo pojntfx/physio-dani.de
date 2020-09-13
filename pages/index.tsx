@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Container,
+  Grid,
   IconButton,
   List,
   ListItem,
@@ -11,7 +12,6 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-  Grid,
 } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 import Link from "next/link";
@@ -93,6 +93,62 @@ const SplitImageWrapper = styled(Grid)`
   ${({ theme }) => theme.breakpoints.up("sm")} {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+  }
+`;
+
+const LeftSplit = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: ${({ theme }) => theme.spacing(2)}px;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: minmax(20rem, auto) !important;
+  }
+`;
+
+const RightSplit = styled(LeftSplit)`
+  grid-template-columns: 2fr 1fr;
+`;
+
+const SplitImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const SplitText = styled.div`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.spacing(2)}px;
+  padding: ${({ theme }) => theme.spacing(4)}px;
+
+  &:last-child {
+    padding-right: 0;
+
+    ${({ theme }) => theme.breakpoints.down("sm")} {
+      padding: 0;
+      padding-bottom: ${({ theme }) => theme.spacing(2)}px !important;
+    }
+  }
+
+  &:first-child {
+    padding-left: 0;
+
+    ${({ theme }) => theme.breakpoints.down("sm")} {
+      padding: 0;
+      padding-top: ${({ theme }) => theme.spacing(2)}px !important;
+    }
+  }
+`;
+
+const SplitCollection = styled.div`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.spacing(4)}px;
+  padding-top: ${({ theme }) => theme.spacing(4)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(4)}px;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    grid-gap: ${({ theme }) => theme.spacing(2)}px;
   }
 `;
 
@@ -288,62 +344,115 @@ const Home = () => {
           </Container>
         </SplitCollection>
       </PrimaryBox>
+
+      <PrimaryBox component="section" id="erfahrung-und-qualifikationen">
+        <SplitCollection>
+          <Container maxWidth="lg">
+            <Typography variant="h2">Erfahrung und Qualifikationen</Typography>
+          </Container>
+
+          <Container maxWidth="lg">
+            <Typography variant="body1">
+              Nach der Geburt meiner Tochter 2000, habe ich meine Zulassung
+              abgegeben und konnte weiterhin stundenweise bei meiner lieben
+              Kollegin Martina (Lorenz ) Finkbeiner behandeln. Seit 2006 bin
+              zusätzlich selbstständig tätig in eigenen Räumen. So kommen doch
+              schon einige Jahre Berufserfahrung zusammen, als Physiotherapeutin
+              und sektorale Heilpraktikerin im Bereich der Physiotherapie.
+            </Typography>
+          </Container>
+
+          <Container maxWidth="lg">
+            <EventList>
+              <EventPrimary style={{ gridArea: "e1a" }}>
+                <Typography variant="body1">
+                  Ausbildung zum <Focus>Removementcoach</Focus> und zusätzliche
+                  BT Kurse im Hinblick auf die Prüfung zum Diplom zur
+                  Boegertherapeutin in Romanshorn/Schweiz
+                </Typography>
+              </EventPrimary>
+              <EventRightPrimary style={{ gridArea: "e1b" }}>
+                <Typography variant="body1">Heute</Typography>
+              </EventRightPrimary>
+
+              <Event style={{ gridArea: "e2c" }}>
+                <Typography variant="body1">
+                  Prüfung zur zertifizierten <Focus>Boegertherapeutin</Focus> in
+                  Romanshorn/Schweiz
+                </Typography>
+              </Event>
+              <EventLeft style={{ gridArea: "e2b" }}>
+                <Typography variant="body1">2018</Typography>
+              </EventLeft>
+
+              <Event style={{ gridArea: "e3a" }}>
+                <Typography variant="body1">
+                  Prüfung zur <Focus>sektoralen Heilpraktikerin</Focus> im
+                  Bereich der Physiotherapie in Karlsruhe
+                </Typography>
+              </Event>
+              <EventRight style={{ gridArea: "e3b" }}>
+                <Typography variant="body1">2012</Typography>
+              </EventRight>
+            </EventList>
+          </Container>
+        </SplitCollection>
+      </PrimaryBox>
     </>
   );
 };
 
-const LeftSplit = styled.div`
+const EventList = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: ${({ theme }) => theme.spacing(2)}px;
+  grid-template-areas:
+    "e1a e1a e1a e1b e1c e1c e1c"
+    "e2a e2a e2a e2b e2c e2c e2c"
+    "e3a e3a e3a e3b e3c e3c e3c";
+  grid-row-gap: ${({ theme }) => theme.spacing(3)}px;
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
-    grid-template-columns: 1fr !important;
-    grid-auto-rows: minmax(20rem, auto) !important;
+    grid-template-areas:
+      "e1a e1a e1a e1b"
+      "e2b e2c e2c e2c"
+      "e3a e3a e3a e3b";
   }
 `;
 
-const RightSplit = styled(LeftSplit)`
-  grid-template-columns: 2fr 1fr;
+const Event = styled(Box)`
+  background: ${({ theme }) => theme.palette.background.paper};
+  padding: ${({ theme }) => theme.spacing(2)}px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  background: #ffffff;
 `;
 
-const SplitImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+const EventPrimary = styled(Event)`
+  background: ${({ theme }) => theme.palette.primary.main};
+  color: #ffffff;
 `;
 
-const SplitText = styled.div`
-  display: grid;
-  grid-gap: ${({ theme }) => theme.spacing(2)}px;
-  padding: ${({ theme }) => theme.spacing(4)}px;
-
-  &:last-child {
-    padding-right: 0;
-
-    ${({ theme }) => theme.breakpoints.down("sm")} {
-      padding: 0;
-      padding-bottom: ${({ theme }) => theme.spacing(2)}px !important;
-    }
-  }
-
-  &:first-child {
-    padding-left: 0;
-
-    ${({ theme }) => theme.breakpoints.down("sm")} {
-      padding: 0;
-      padding-top: ${({ theme }) => theme.spacing(2)}px !important;
-    }
+const DatePoint = styled(Event)`
+  padding: ${({ theme }) => theme.spacing(3)}px;
+  > * {
+    font-weight: ${({ theme }) => theme.typography.fontWeightBold} !important;
   }
 `;
 
-const SplitCollection = styled.div`
-  display: grid;
-  grid-gap: ${({ theme }) => theme.spacing(4)}px;
+const EventRight = styled(DatePoint)`
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  background: #ffffff;
+`;
 
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    grid-gap: ${({ theme }) => theme.spacing(2)}px;
-  }
+const EventRightPrimary = styled(EventRight)`
+  background: ${({ theme }) => theme.palette.primary.main};
+  color: #ffffff;
+`;
+
+const EventLeft = styled(DatePoint)`
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
 `;
 
 export default Home;
