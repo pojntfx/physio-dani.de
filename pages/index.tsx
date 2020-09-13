@@ -1,23 +1,28 @@
 import {
+  AppBar,
   Box,
   Button,
   Container,
+  Dialog,
   Grid,
   IconButton,
   Link,
   List,
   ListItem,
   ListItemText,
+  Slide,
   SwipeableDrawer,
   Toolbar,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
-import { Menu } from "@material-ui/icons";
-import { useState } from "react";
-import styled from "styled-components";
+import { TransitionProps } from "@material-ui/core/transitions/transition";
+import { Close, Menu } from "@material-ui/icons";
+import CookieConsent from "material-ui-cookie-consent";
 import NextLink from "next/link";
+import { forwardRef, useState } from "react";
+import styled from "styled-components";
 
 const PrimaryBox = styled(Box)`
   background: ${({ theme }) => theme.palette.background.paper};
@@ -113,7 +118,6 @@ const RightSplit = styled(LeftSplit)`
 `;
 
 const InvertedSplit = styled(LeftSplit)`
-  grid-template-columns: 4fr 1fr;
   min-height: 30rem;
 `;
 
@@ -235,10 +239,18 @@ const SplitIframe = styled.iframe`
   height: 100%;
 `;
 
+const Transition = forwardRef(function Transition(
+  props: TransitionProps & { children?: React.ReactElement },
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const Home = () => {
   const theme = useTheme();
   const navMenuFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [navMenuOpen, setNavMenuOpen] = useState(false);
+  const [imprintOpen, setImprintOpen] = useState(false);
 
   return (
     <>
@@ -722,8 +734,161 @@ const Home = () => {
           </Container>
         </SplitCollection>
       </PrimaryBox>
+
+      <PrimaryBox>
+        <Container maxWidth="lg">
+          <Toolbar disableGutters>
+            <>
+              <NavButton href="https://github.com/pojntfx/physio-dani.de">
+                © 2020 Daniela Burkhardt
+              </NavButton>
+              <NavButton onClick={() => setImprintOpen(true)}>
+                Impressum und Datenschutz
+              </NavButton>
+
+              <Dialog
+                fullScreen
+                open={imprintOpen}
+                onClose={() => setImprintOpen(false)}
+                TransitionComponent={Transition}
+              >
+                <ImprintAppBar>
+                  <Toolbar>
+                    <IconButton
+                      edge="start"
+                      color="inherit"
+                      onClick={() => setImprintOpen(false)}
+                      aria-label="close"
+                    >
+                      <Close />
+                    </IconButton>
+                    <ImprintHeader variant="h6">
+                      Impressum und Datenschutz
+                    </ImprintHeader>
+                  </Toolbar>
+                </ImprintAppBar>
+                <ImprintContainer>
+                  <h1>Impressum</h1>
+                  <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
+                  <p>
+                    Daniela Burkhardt
+                    <br />
+                    H&ouml;ferk&ouml;pfleweg 42
+                    <br />
+                    72270 Baiersbronn
+                  </p>
+                  <h2>Kontakt</h2>
+                  <p>
+                    Telefon: 07442 50964
+                    <br />
+                    Telefax: 0170 4746795
+                    <br />
+                    E-Mail: physio-dani@web.de
+                  </p>
+                  <h2>
+                    Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle
+                  </h2>
+                  <p>
+                    Wir sind nicht bereit oder verpflichtet, an
+                    Streitbeilegungsverfahren vor einer
+                    Verbraucherschlichtungsstelle teilzunehmen.
+                  </p>
+                  <h3>Haftung f&uuml;r Inhalte</h3>{" "}
+                  <p>
+                    Als Diensteanbieter sind wir gem&auml;&szlig; &sect; 7 Abs.1
+                    TMG f&uuml;r eigene Inhalte auf diesen Seiten nach den
+                    allgemeinen Gesetzen verantwortlich. Nach &sect;&sect; 8 bis
+                    10 TMG sind wir als Diensteanbieter jedoch nicht
+                    verpflichtet, &uuml;bermittelte oder gespeicherte fremde
+                    Informationen zu &uuml;berwachen oder nach Umst&auml;nden zu
+                    forschen, die auf eine rechtswidrige T&auml;tigkeit
+                    hinweisen.
+                  </p>{" "}
+                  <p>
+                    Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
+                    Informationen nach den allgemeinen Gesetzen bleiben hiervon
+                    unber&uuml;hrt. Eine diesbez&uuml;gliche Haftung ist jedoch
+                    erst ab dem Zeitpunkt der Kenntnis einer konkreten
+                    Rechtsverletzung m&ouml;glich. Bei Bekanntwerden von
+                    entsprechenden Rechtsverletzungen werden wir diese Inhalte
+                    umgehend entfernen.
+                  </p>{" "}
+                  <h3>Haftung f&uuml;r Links</h3>{" "}
+                  <p>
+                    Unser Angebot enth&auml;lt Links zu externen Websites
+                    Dritter, auf deren Inhalte wir keinen Einfluss haben.
+                    Deshalb k&ouml;nnen wir f&uuml;r diese fremden Inhalte auch
+                    keine Gew&auml;hr &uuml;bernehmen. F&uuml;r die Inhalte der
+                    verlinkten Seiten ist stets der jeweilige Anbieter oder
+                    Betreiber der Seiten verantwortlich. Die verlinkten Seiten
+                    wurden zum Zeitpunkt der Verlinkung auf m&ouml;gliche
+                    Rechtsverst&ouml;&szlig;e &uuml;berpr&uuml;ft. Rechtswidrige
+                    Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
+                  </p>{" "}
+                  <p>
+                    Eine permanente inhaltliche Kontrolle der verlinkten Seiten
+                    ist jedoch ohne konkrete Anhaltspunkte einer
+                    Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von
+                    Rechtsverletzungen werden wir derartige Links umgehend
+                    entfernen.
+                  </p>{" "}
+                  <h3>Urheberrecht</h3>{" "}
+                  <p>
+                    Die durch die Seitenbetreiber erstellten Inhalte und Werke
+                    auf diesen Seiten unterliegen dem deutschen Urheberrecht.
+                    Die Vervielf&auml;ltigung, Bearbeitung, Verbreitung und jede
+                    Art der Verwertung au&szlig;erhalb der Grenzen des
+                    Urheberrechtes bed&uuml;rfen der schriftlichen Zustimmung
+                    des jeweiligen Autors bzw. Erstellers. Downloads und Kopien
+                    dieser Seite sind nur f&uuml;r den privaten, nicht
+                    kommerziellen Gebrauch gestattet.
+                  </p>{" "}
+                  <p>
+                    Soweit die Inhalte auf dieser Seite nicht vom Betreiber
+                    erstellt wurden, werden die Urheberrechte Dritter beachtet.
+                    Insbesondere werden Inhalte Dritter als solche
+                    gekennzeichnet. Sollten Sie trotzdem auf eine
+                    Urheberrechtsverletzung aufmerksam werden, bitten wir um
+                    einen entsprechenden Hinweis. Bei Bekanntwerden von
+                    Rechtsverletzungen werden wir derartige Inhalte umgehend
+                    entfernen.
+                  </p>
+                  <p>
+                    Quelle:{" "}
+                    <Link href="https://www.e-recht24.de">eRecht24</Link>
+                  </p>
+                </ImprintContainer>
+              </Dialog>
+            </>
+            <NextLink href="#">
+              <NavLogo
+                alt="Logo der Physiotherapie Daniela Burkhardt"
+                src="/logo.png"
+                loading="lazy"
+              />
+            </NextLink>
+          </Toolbar>
+        </Container>
+      </PrimaryBox>
+
+      <CookieConsent
+        cookieName="cookieConsent"
+        message={`Diese Website verwendet Cookies – nähere Informationen dazu und zu Ihren Rechten als Benutzer finden Sie in unserer Datenschutzerklärung am Ende der Seite. Klicken Sie auf "Accept", um Cookies zu akzeptieren und direkt unsere Website besuchen zu können.`}
+      />
     </>
   );
 };
+
+const ImprintAppBar = styled(AppBar)`
+  position: relative;
+`;
+
+const ImprintHeader = styled(Typography)`
+  margin-left: ${({ theme }) => theme.spacing(2)}px;
+`;
+
+const ImprintContainer = styled(Container)`
+  font-style: normal;
+`;
 
 export default Home;
