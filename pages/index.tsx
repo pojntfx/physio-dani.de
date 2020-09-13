@@ -751,6 +751,7 @@ const Home = () => {
                 open={imprintOpen}
                 onClose={() => setImprintOpen(false)}
                 TransitionComponent={Transition}
+                scroll="body"
               >
                 <ImprintAppBar>
                   <Toolbar>
