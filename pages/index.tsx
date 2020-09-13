@@ -394,6 +394,85 @@ const Home = () => {
               <EventRight style={{ gridArea: "e3b" }}>
                 <Typography variant="body1">2012</Typography>
               </EventRight>
+
+              <Event style={{ gridArea: "e4c" }}>
+                <Typography variant="body1">
+                  Kurs zum <Focus>Kinesiotaping</Focus> in Freiburg
+                </Typography>
+              </Event>
+              <EventLeft style={{ gridArea: "e4b" }}>
+                <Typography variant="body1">2009</Typography>
+              </EventLeft>
+
+              <Event style={{ gridArea: "e5a" }}>
+                <Typography variant="body1">
+                  Prüfung zur{" "}
+                  <Focus>Lymphdrainage und komplexe Entstauungstherapie</Focus>{" "}
+                  und Ausbildung zur manuellen Gelenksdrainage in Offenburg
+                </Typography>
+              </Event>
+              <EventRight style={{ gridArea: "e5b" }}>
+                <Typography variant="body1">2000</Typography>
+              </EventRight>
+
+              <Event style={{ gridArea: "e6c" }}>
+                <Typography variant="body1">
+                  <Focus>Selbstständige Tätigkeit als Physiotherapeutin</Focus>{" "}
+                  in der Praxisgemeinschaft Lorenz Frey Glaser in
+                  Klosterreichenbach
+                </Typography>
+              </Event>
+              <EventLeft style={{ gridArea: "e6b" }}>
+                <Typography variant="body1">
+                  1998-
+                  <br />
+                  2000
+                </Typography>
+              </EventLeft>
+
+              <Event style={{ gridArea: "e7a" }}>
+                <Typography variant="body1">
+                  Prüfung zur{" "}
+                  <Focus>Brüggertherapeutin und Rückenschullehrerin</Focus> in
+                  Murnau
+                  <br />
+                  Prüfung zur <Focus>Therapeutin für Manuelle Medizin</Focus> in
+                  Isny/Neutrauchburg
+                </Typography>
+              </Event>
+              <EventRight style={{ gridArea: "e7b" }}>
+                <Typography variant="body1">1999</Typography>
+              </EventRight>
+
+              <Event style={{ gridArea: "e8c" }}>
+                <Typography variant="body1">
+                  Teil des Anerkennungspraktikums, dann angestellt als
+                  Physiotherapeutin und später als{" "}
+                  <Focus>leitende Physiotherapeutin</Focus>
+                  tätig in der Kurklinik Sonnenhof in Lützenhardt
+                </Typography>
+              </Event>
+              <EventLeft style={{ gridArea: "e8b" }}>
+                <Typography variant="body1">
+                  1995-
+                  <br />
+                  1998
+                </Typography>
+              </EventLeft>
+
+              <Event style={{ gridArea: "e9a" }}>
+                <Typography variant="body1">
+                  Teil des <Focus>Anerkennungspraktikums</Focus> in der
+                  neurologischen Klinik Selzer in Schönmünzach
+                </Typography>
+              </Event>
+              <EventRight style={{ gridArea: "e9b" }}>
+                <Typography variant="body1">
+                  1994-
+                  <br />
+                  1995
+                </Typography>
+              </EventRight>
             </EventList>
           </Container>
         </SplitCollection>
@@ -407,14 +486,26 @@ const EventList = styled.div`
   grid-template-areas:
     "e1a e1a e1a e1b e1c e1c e1c"
     "e2a e2a e2a e2b e2c e2c e2c"
-    "e3a e3a e3a e3b e3c e3c e3c";
+    "e3a e3a e3a e3b e3c e3c e3c"
+    "e4a e4a e4a e4b e4c e4c e4c"
+    "e5a e5a e5a e5b e5c e5c e5c"
+    "e6a e6a e6a e6b e6c e6c e6c"
+    "e7a e7a e7a e7b e7c e7c e7c"
+    "e8a e8a e8a e8b e8c e8c e8c"
+    "e9a e9a e9a e9b e9c e9c e9c";
   grid-row-gap: ${({ theme }) => theme.spacing(3)}px;
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
     grid-template-areas:
       "e1a e1a e1a e1b"
       "e2b e2c e2c e2c"
-      "e3a e3a e3a e3b";
+      "e3a e3a e3a e3b"
+      "e4a e4a e4a e4b"
+      "e5a e5a e5a e5b"
+      "e6a e6a e6a e6b"
+      "e7a e7a e7a e7b"
+      "e8a e8a e8a e8b"
+      "e9a e9a e9a e9b";
   }
 `;
 
