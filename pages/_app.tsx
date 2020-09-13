@@ -57,6 +57,13 @@ const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
             fontWeight: 900,
             letterSpacing: "0.05rem",
           },
+          h3: {
+            fontStyle: "normal",
+            textTransform: "uppercase",
+            fontSize: "1.5rem",
+            fontWeight: 900,
+            letterSpacing: "0.05rem",
+          },
           body1: {
             fontStyle: "normal",
           },
