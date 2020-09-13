@@ -152,6 +152,70 @@ const SplitCollection = styled.div`
   }
 `;
 
+const EventList = styled.div`
+  display: grid;
+  grid-template-areas:
+    "e1a e1a e1a e1b e1c e1c e1c"
+    "e2a e2a e2a e2b e2c e2c e2c"
+    "e3a e3a e3a e3b e3c e3c e3c"
+    "e4a e4a e4a e4b e4c e4c e4c"
+    "e5a e5a e5a e5b e5c e5c e5c"
+    "e6a e6a e6a e6b e6c e6c e6c"
+    "e7a e7a e7a e7b e7c e7c e7c"
+    "e8a e8a e8a e8b e8c e8c e8c"
+    "e9a e9a e9a e9b e9c e9c e9c";
+  grid-row-gap: ${({ theme }) => theme.spacing(3)}px;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    grid-template-areas:
+      "e1a e1a e1a e1b"
+      "e2b e2c e2c e2c"
+      "e3a e3a e3a e3b"
+      "e4b e4c e4c e4c"
+      "e5a e5a e5a e5b"
+      "e6b e6c e6c e6c"
+      "e7a e7a e7a e7b"
+      "e8b e8c e8c e8c"
+      "e9a e9a e9a e9b";
+  }
+`;
+
+const Event = styled(Box)`
+  color: ${({ theme }) => theme.palette.background.paper};
+  padding: ${({ theme }) => theme.spacing(2)}px;
+  display: flex;
+  align-items: center;
+  background: ${({ theme }) => theme.palette.text.primary};
+`;
+
+const EventPrimary = styled(Event)`
+  background: ${({ theme }) => theme.palette.primary.main};
+  color: #ffffff;
+`;
+
+const DatePoint = styled(Event)`
+  padding: ${({ theme }) => theme.spacing(3)}px;
+  > * {
+    font-weight: ${({ theme }) => theme.typography.fontWeightBold} !important;
+  }
+`;
+
+const EventRight = styled(DatePoint)`
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  background: ${({ theme }) => theme.palette.text.primary};
+`;
+
+const EventRightPrimary = styled(EventRight)`
+  background: ${({ theme }) => theme.palette.primary.main};
+  color: #ffffff;
+`;
+
+const EventLeft = styled(DatePoint)`
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+`;
+
 const Home = () => {
   const theme = useTheme();
   const navMenuFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -487,7 +551,7 @@ const Home = () => {
           <Container>
             <RightSplit>
               <SplitText>
-                <Typography variant="h2" gutterBottom>
+                <Typography variant="h3" gutterBottom>
                   Boeger-Therapie
                 </Typography>
                 <Typography variant="body1" gutterBottom>
@@ -541,7 +605,7 @@ const Home = () => {
                 src="/removement.jpg"
               />
               <SplitText>
-                <Typography variant="h2" gutterBottom>
+                <Typography variant="h3" gutterBottom>
                   REMovement
                 </Typography>
                 <Typography variant="body1" gutterBottom>
@@ -570,7 +634,7 @@ const Home = () => {
           <Container>
             <RightSplit>
               <SplitText>
-                <Typography variant="h2" gutterBottom>
+                <Typography variant="h3" gutterBottom>
                   iXpending
                 </Typography>
 
@@ -602,69 +666,5 @@ const Home = () => {
     </>
   );
 };
-
-const EventList = styled.div`
-  display: grid;
-  grid-template-areas:
-    "e1a e1a e1a e1b e1c e1c e1c"
-    "e2a e2a e2a e2b e2c e2c e2c"
-    "e3a e3a e3a e3b e3c e3c e3c"
-    "e4a e4a e4a e4b e4c e4c e4c"
-    "e5a e5a e5a e5b e5c e5c e5c"
-    "e6a e6a e6a e6b e6c e6c e6c"
-    "e7a e7a e7a e7b e7c e7c e7c"
-    "e8a e8a e8a e8b e8c e8c e8c"
-    "e9a e9a e9a e9b e9c e9c e9c";
-  grid-row-gap: ${({ theme }) => theme.spacing(3)}px;
-
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    grid-template-areas:
-      "e1a e1a e1a e1b"
-      "e2b e2c e2c e2c"
-      "e3a e3a e3a e3b"
-      "e4b e4c e4c e4c"
-      "e5a e5a e5a e5b"
-      "e6b e6c e6c e6c"
-      "e7a e7a e7a e7b"
-      "e8b e8c e8c e8c"
-      "e9a e9a e9a e9b";
-  }
-`;
-
-const Event = styled(Box)`
-  color: ${({ theme }) => theme.palette.background.paper};
-  padding: ${({ theme }) => theme.spacing(2)}px;
-  display: flex;
-  align-items: center;
-  background: ${({ theme }) => theme.palette.text.primary};
-`;
-
-const EventPrimary = styled(Event)`
-  background: ${({ theme }) => theme.palette.primary.main};
-  color: #ffffff;
-`;
-
-const DatePoint = styled(Event)`
-  padding: ${({ theme }) => theme.spacing(3)}px;
-  > * {
-    font-weight: ${({ theme }) => theme.typography.fontWeightBold} !important;
-  }
-`;
-
-const EventRight = styled(DatePoint)`
-  border-top-right-radius: 9999px;
-  border-bottom-right-radius: 9999px;
-  background: ${({ theme }) => theme.palette.text.primary};
-`;
-
-const EventRightPrimary = styled(EventRight)`
-  background: ${({ theme }) => theme.palette.primary.main};
-  color: #ffffff;
-`;
-
-const EventLeft = styled(DatePoint)`
-  border-top-left-radius: 9999px;
-  border-bottom-left-radius: 9999px;
-`;
 
 export default Home;
