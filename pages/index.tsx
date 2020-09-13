@@ -313,7 +313,7 @@ const Home = () => {
             <LeftSplit>
               <SplitImage
                 alt="Beispiel einer Boeger-Behandlung"
-                src="/boeger-2.jpg"
+                src="/boeger.jpg"
               />
               <SplitText>
                 <Typography variant="body1" gutterBottom>
@@ -477,6 +477,128 @@ const Home = () => {
           </Container>
         </SplitCollection>
       </PrimaryBox>
+
+      <PrimaryBox component="section" id="leistungen">
+        <SplitCollection>
+          <Container maxWidth="lg">
+            <Typography variant="h2">Leistungen</Typography>
+          </Container>
+
+          <Container>
+            <RightSplit>
+              <SplitText>
+                <Typography variant="h2" gutterBottom>
+                  Boeger-Therapie
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  Entzündungsbedingte Verklebungen, sichtbare und unsichtbare
+                  Narben, blockieren den natürlichen Fluss, verringern die
+                  Beweglichkeit und schränken gesunde Körperfunktionen ein.
+                  Störungen im Systemkreislauf können sich u.a. äußern als:
+                </Typography>
+
+                <ul>
+                  <li>Verspannungen der Muskulatur</li>
+                  <li>Schmerzen aller Art</li>
+                  <li>Sensibilitätsstörungen der Nerven</li>
+                  <li>Verzögerte Heilungsprozesse</li>
+                  <li>Eingeschränkte Blutzirkulation</li>
+                  <li>Abwehrschwäche Ödembildung durch Lymphstau</li>
+                  <li>Eingeschränkte Organtätigkeit</li>
+                  <li>Veränderte Verdauung</li>
+                </ul>
+
+                <Typography variant="body1">
+                  Nachdem mit der von David Boeger entwickelten Technik
+                  sichtbare und unsichtbare Narben gelöst sind, kann sich der
+                  Patient aus seiner Schonhaltung befreien. Nach wenigen Minuten
+                  ist bereits nachprüfbar, ob der gewählte Weg den gewünschten
+                  Erfolg bringt. Die Beweglichkeit ist erweitert, die Schmerzen
+                  reduziert.
+                </Typography>
+
+                <Typography variant="body1">
+                  <Highlight>
+                    "Ich fühl mich gleich viel wohler", "Jetzt kann ich
+                    aufatmen", "Das ist ja unglaublich", "Die Narbe sieht nach
+                    30 Jahren besser aus", "Das ist ja der Hammer, ewig mach ich
+                    schon rum", "Ich konnte seit Monaten nicht mehr so gut
+                    Treppen laufen!" ... freue ich mich zu hören.
+                  </Highlight>
+                </Typography>
+              </SplitText>
+              <SplitImage
+                alt="Detailaufnahme der Massage einer Hand"
+                src="/massage-hand.jpg"
+              />
+            </RightSplit>
+          </Container>
+
+          <Container>
+            <LeftSplit>
+              <SplitImage
+                alt="Beispiel einer Removement-Behandlung"
+                src="/removement.jpg"
+              />
+              <SplitText>
+                <Typography variant="h2" gutterBottom>
+                  REMovement
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  REMovement ist eine simple Technik zur Reduktion der Muskel
+                  und Gewebespannung. Der Begriff setzt sich aus der REM Phase,
+                  wie wir sie vom Schlaf kennen und dem engl. Wort „movement“
+                  für Bewegung zusammen. Durch die bewusste bilaterale
+                  Hemisphärenstimulation kann der Sympathikotonus in kurzer Zeit
+                  signifikant gesenkt werden. Auch belastende emotionale
+                  Zustände können aufgelöst werden.
+                </Typography>
+                <Typography variant="body1">
+                  <Focus>
+                    "Das schlägt mir auf den Magen", "Das geht mir an die
+                    Nieren", "Gelähmt vor Angst", "Das sitzt mir im Genick",
+                    "Ich kann s nicht mehr hören!" ... unsere Umgangssprache
+                    weiß, wo das Problem liegt und REMovement ist ein tolles
+                    Instrument, um diese Gedankenmuster zu
+                    bearbeiten/aufzulösen.
+                  </Focus>
+                </Typography>
+              </SplitText>
+            </LeftSplit>
+          </Container>
+
+          <Container>
+            <RightSplit>
+              <SplitText>
+                <Typography variant="h2" gutterBottom>
+                  iXpending
+                </Typography>
+
+                <Typography variant="body1" gutterBottom>
+                  Solange Organ und Muskelfaszien gestaut sind, ist es mit der
+                  Beweglichkeit nicht weit her. iXpending beinhaltet Übungen zur
+                  Faszienentstauung und mobilisation , sowie die Anleitung zur
+                  Eigenmobilisation von Organen.
+                </Typography>
+
+                <Typography variant="body1">
+                  Haltungsschulung und für jeden praktikable Kräftigungs und
+                  Dehnungsübungen machen uns mobiler, schmerzfreier und man
+                  fühlt sich einfach deutlich wohler.
+                </Typography>
+
+                <Typography variant="body1">
+                  <Highlight>iXpending BEWEGT!</Highlight>
+                </Typography>
+              </SplitText>
+              <SplitImage
+                alt="Detailaufnahme einer iXpending-Broschüre"
+                src="/ixpending.jpg"
+              />
+            </RightSplit>
+          </Container>
+        </SplitCollection>
+      </PrimaryBox>
     </>
   );
 };
@@ -510,12 +632,11 @@ const EventList = styled.div`
 `;
 
 const Event = styled(Box)`
-  background: ${({ theme }) => theme.palette.background.paper};
+  color: ${({ theme }) => theme.palette.background.paper};
   padding: ${({ theme }) => theme.spacing(2)}px;
   display: flex;
   align-items: center;
-  color: #000000;
-  background: #ffffff;
+  background: ${({ theme }) => theme.palette.text.primary};
 `;
 
 const EventPrimary = styled(Event)`
@@ -533,7 +654,7 @@ const DatePoint = styled(Event)`
 const EventRight = styled(DatePoint)`
   border-top-right-radius: 9999px;
   border-bottom-right-radius: 9999px;
-  background: #ffffff;
+  background: ${({ theme }) => theme.palette.text.primary};
 `;
 
 const EventRightPrimary = styled(EventRight)`
