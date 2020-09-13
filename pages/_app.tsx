@@ -1,8 +1,8 @@
 import { CssBaseline, NoSsr, useMediaQuery } from "@material-ui/core";
 import {
-  createMuiTheme,
-  MuiThemeProvider,
-  StylesProvider,
+    createMuiTheme,
+    MuiThemeProvider,
+    StylesProvider
 } from "@material-ui/core/styles";
 import "fontsource-lato";
 import { AppProps } from "next/app";
@@ -65,6 +65,9 @@ const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
             letterSpacing: "0.05rem",
           },
           body1: {
+            fontStyle: "normal",
+          },
+          h6: {
             fontStyle: "normal",
           },
           body2: {
