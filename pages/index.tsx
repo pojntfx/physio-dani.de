@@ -622,11 +622,11 @@ const EventList = styled.div`
       "e1a e1a e1a e1b"
       "e2b e2c e2c e2c"
       "e3a e3a e3a e3b"
-      "e4a e4a e4a e4b"
+      "e4b e4c e4c e4c"
       "e5a e5a e5a e5b"
-      "e6a e6a e6a e6b"
+      "e6b e6c e6c e6c"
       "e7a e7a e7a e7b"
-      "e8a e8a e8a e8b"
+      "e8b e8c e8c e8c"
       "e9a e9a e9a e9b";
   }
 `;
