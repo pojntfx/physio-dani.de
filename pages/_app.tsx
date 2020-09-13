@@ -1,8 +1,8 @@
-import { CssBaseline, NoSsr, useMediaQuery } from "@material-ui/core";
+import { CssBaseline, useMediaQuery } from "@material-ui/core";
 import {
-    createMuiTheme,
-    MuiThemeProvider,
-    StylesProvider
+  createMuiTheme,
+  MuiThemeProvider,
+  StylesProvider,
 } from "@material-ui/core/styles";
 import "fontsource-lato";
 import { AppProps } from "next/app";
@@ -84,17 +84,15 @@ const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
   );
 
   return (
-    <NoSsr>
-      <MuiThemeProvider theme={theme}>
-        <ThemeProvider theme={theme}>
-          <StylesProvider injectFirst>
-            <CssBaseline />
-            <GlobalStyle />
-            <Component {...pageProps} />
-          </StylesProvider>
-        </ThemeProvider>
-      </MuiThemeProvider>
-    </NoSsr>
+    <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <StylesProvider injectFirst>
+          <CssBaseline />
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </StylesProvider>
+      </ThemeProvider>
+    </MuiThemeProvider>
   );
 };
 
