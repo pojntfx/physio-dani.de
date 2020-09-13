@@ -23,6 +23,7 @@ import CookieConsent from "material-ui-cookie-consent";
 import NextLink from "next/link";
 import { forwardRef, useState } from "react";
 import styled from "styled-components";
+import Head from "next/head";
 
 const PrimaryBox = styled(Box)`
   background: ${({ theme }) => theme.palette.background.paper};
@@ -254,6 +255,14 @@ const Home = () => {
 
   return (
     <>
+      <Head>
+        <title>Physiotherapie Daniela Burkhardt</title>
+        <meta name="author" content="Daniela Burkhardt"></meta>
+        <meta
+          name="description"
+          content="Staatlich geprüfte Physiotherapeutin & Heilpraktikerin im Bereich Physiotherapie."
+        ></meta>
+      </Head>
       <PrimaryBox>
         <Container maxWidth="lg">
           <Toolbar disableGutters>
