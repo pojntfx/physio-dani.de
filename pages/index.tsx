@@ -81,18 +81,26 @@ const Name = styled(Typography)`
 `;
 
 const CTAs = styled.div`
-  > *:not(:last-child) {
-    margin-right: ${({ theme }) => theme.spacing(2)}px;
-
-    ${({ theme }) => theme.breakpoints.down("sm")} {
-      margin-bottom: ${({ theme }) => theme.spacing(2)}px;
-    }
-  }
-
   margin-top: ${({ theme }) => theme.spacing(2)}px;
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
     margin-bottom: ${({ theme }) => theme.spacing(6)}px;
+  }
+
+  display: flex;
+
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    > *:not(:last-child) {
+      margin-right: ${({ theme }) => theme.spacing(2)}px;
+    }
+  }
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    flex-direction: column;
+
+    > *:not(:last-child) {
+      margin-bottom: ${({ theme }) => theme.spacing(2)}px;
+    }
   }
 `;
 
