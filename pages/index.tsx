@@ -16,14 +16,21 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  Fab,
 } from "@material-ui/core";
 import { TransitionProps } from "@material-ui/core/transitions/transition";
-import { Close, Menu } from "@material-ui/icons";
+import { Close, Menu, KeyboardArrowUp } from "@material-ui/icons";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import NextLink from "next/link";
 import { forwardRef, useState } from "react";
 import styled from "styled-components";
+import { HideOnScroll } from "../components/HideOnScroll";
+import { ScrollTop } from "../components/ScrollTop";
+
+const PrimaryAppBar = styled(AppBar)`
+  background: ${({ theme }) => theme.palette.background.paper};
+`;
 
 const PrimaryBox = styled(Box)`
   background: ${({ theme }) => theme.palette.background.paper};
@@ -38,10 +45,10 @@ const NavButton = styled(Button)`
 `;
 
 const NavLogo = styled.img`
-  max-height: ${({ theme }) => theme.spacing(14)}px;
+  max-height: ${({ theme }) => theme.spacing(18)}px;
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
-    max-height: ${({ theme }) => theme.spacing(8)}px;
+    max-height: ${({ theme }) => theme.spacing(12)}px;
   }
 
   margin-left: auto;
@@ -273,84 +280,91 @@ const Home = () => {
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <meta name="theme-color" content={theme.palette.primary.main} />
       </Head>
-      <PrimaryBox>
-        <Container maxWidth="lg">
-          <Toolbar disableGutters>
-            {navMenuFullscreen ? (
-              <>
-                <IconButton onClick={() => setNavMenuOpen(true)}>
-                  <Menu />
-                </IconButton>
+      <HideOnScroll>
+        <PrimaryAppBar>
+          <Container maxWidth="lg">
+            <Toolbar disableGutters>
+              {navMenuFullscreen ? (
+                <>
+                  <IconButton onClick={() => setNavMenuOpen(true)}>
+                    <Menu />
+                  </IconButton>
 
-                <SwipeableDrawer
-                  open={navMenuOpen}
-                  onClose={() => setNavMenuOpen(false)}
-                  onOpen={() => setNavMenuOpen(true)}
-                >
-                  <List component="nav">
-                    <ListItem
-                      button
-                      component="a"
-                      href="#mehr-ueber-mich"
-                      onClick={() => setNavMenuOpen(false)}
-                    >
-                      <SliderListItemText>Über mich</SliderListItemText>
-                    </ListItem>
-                    <ListItem
-                      button
-                      component="a"
-                      href="#erfahrung-und-qualifikationen"
-                      onClick={() => setNavMenuOpen(false)}
-                    >
-                      <SliderListItemText>
-                        Erfahrung und Qualifikationen
-                      </SliderListItemText>
-                    </ListItem>
-                    <ListItem
-                      button
-                      component="a"
-                      href="#leistungen"
-                      onClick={() => setNavMenuOpen(false)}
-                    >
-                      <SliderListItemText>Leistungen</SliderListItemText>
-                    </ListItem>
-                    <ListItem
-                      button
-                      component="a"
-                      href="#kontakt-und-anfahrt"
-                      onClick={() => setNavMenuOpen(false)}
-                    >
-                      <SliderListItemText>
-                        Kontakt und Anfahrt
-                      </SliderListItemText>
-                    </ListItem>
-                  </List>
-                </SwipeableDrawer>
-              </>
-            ) : (
-              <>
-                <NavButton href="#mehr-ueber-mich">Über mich</NavButton>
-                <NavButton href="#erfahrung-und-qualifikationen">
-                  Erfahrung und Qualifikationen
-                </NavButton>
-                <NavButton href="#leistungen">Leistungen</NavButton>
-                <NavButton href="#kontakt-und-anfahrt">
-                  Kontakt und Anfahrt
-                </NavButton>
-              </>
-            )}
-            <NextLink href="#">
+                  <SwipeableDrawer
+                    open={navMenuOpen}
+                    onClose={() => setNavMenuOpen(false)}
+                    onOpen={() => setNavMenuOpen(true)}
+                  >
+                    <List component="nav">
+                      <ListItem
+                        button
+                        component="a"
+                        href="#mehr-ueber-mich"
+                        onClick={() => setNavMenuOpen(false)}
+                      >
+                        <SliderListItemText>Über mich</SliderListItemText>
+                      </ListItem>
+                      <ListItem
+                        button
+                        component="a"
+                        href="#erfahrung-und-qualifikationen"
+                        onClick={() => setNavMenuOpen(false)}
+                      >
+                        <SliderListItemText>
+                          Erfahrung und Qualifikationen
+                        </SliderListItemText>
+                      </ListItem>
+                      <ListItem
+                        button
+                        component="a"
+                        href="#leistungen"
+                        onClick={() => setNavMenuOpen(false)}
+                      >
+                        <SliderListItemText>Leistungen</SliderListItemText>
+                      </ListItem>
+                      <ListItem
+                        button
+                        component="a"
+                        href="#kontakt-und-anfahrt"
+                        onClick={() => setNavMenuOpen(false)}
+                      >
+                        <SliderListItemText>
+                          Kontakt und Anfahrt
+                        </SliderListItemText>
+                      </ListItem>
+                    </List>
+                  </SwipeableDrawer>
+                </>
+              ) : (
+                <>
+                  <NavButton href="#mehr-ueber-mich">Über mich</NavButton>
+                  <NavButton href="#erfahrung-und-qualifikationen">
+                    Erfahrung und Qualifikationen
+                  </NavButton>
+                  <NavButton href="#leistungen">Leistungen</NavButton>
+                  <NavButton href="#kontakt-und-anfahrt">
+                    Kontakt und Anfahrt
+                  </NavButton>
+                </>
+              )}
               <NavLogo
                 alt="Logo der Physiotherapie Daniela Burkhardt"
                 src="/logo.png"
                 loading="lazy"
+                onClick={() =>
+                  window.scroll({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                  })
+                }
               />
-            </NextLink>
-          </Toolbar>
-        </Container>
-      </PrimaryBox>
+            </Toolbar>
+          </Container>
+        </PrimaryAppBar>
+      </HideOnScroll>
 
-      <Container maxWidth="md">
+      <SubNavbarContainer maxWidth="md" id="back-to-top-anchor">
         <Grid container alignItems="center">
           <Grid item sm={12} md={4}>
             <Avatar
@@ -390,7 +404,7 @@ const Home = () => {
             </CTAs>
           </Grid>
         </Grid>
-      </Container>
+      </SubNavbarContainer>
 
       <PrimaryBox component="section" id="mehr-ueber-mich">
         <SplitCollection>
@@ -448,7 +462,7 @@ const Home = () => {
                   <Focus>
                     Den Menschen als Ganzes zu sehen - den Körper, die Psyche
                     mit all den körperlichen und seelischen Narben, die so ein
-                    Leben hinterlässt finde ich ungeheuer wichtig und dazu nun
+                    Leben hinterlässt, finde ich ungeheuer wichtig und dazu nun
                     eine Methode zu haben, dieses bearbeiten zu können, macht
                     für mich eine Physiotherapie komplett.
                   </Focus>
@@ -467,12 +481,13 @@ const Home = () => {
 
           <Container maxWidth="lg">
             <Typography variant="body1">
-              Nach der Geburt meiner Tochter 2000, habe ich meine Zulassung
-              abgegeben und konnte weiterhin stundenweise bei meiner lieben
-              Kollegin Martina (Lorenz ) Finkbeiner behandeln. Seit 2006 bin
-              zusätzlich selbstständig tätig in eigenen Räumen. So kommen doch
-              schon einige Jahre Berufserfahrung zusammen, als Physiotherapeutin
-              und sektorale Heilpraktikerin im Bereich der Physiotherapie.
+              Nach der Geburt meiner Tochter im Jahr 2000, habe ich meine
+              Zulassung abgegeben und konnte weiterhin stundenweise bei meiner
+              lieben Kollegin Martina (Lorenz ) Finkbeiner behandeln. Seit 2006
+              bin zusätzlich selbstständig tätig in eigenen Räumen. So kommen
+              doch schon einige Jahre Berufserfahrung zusammen, als
+              Physiotherapeutin und sektorale Heilpraktikerin im Bereich der
+              Physiotherapie.
             </Typography>
           </Container>
 
@@ -562,8 +577,8 @@ const Home = () => {
                 <Typography variant="body1">
                   Teil des Anerkennungspraktikums, dann angestellt als
                   Physiotherapeutin und später als{" "}
-                  <Focus>leitende Physiotherapeutin</Focus>
-                  tätig in der Kurklinik Sonnenhof in Lützenhardt
+                  <Focus>leitende Physiotherapeutin</Focus> tätig in der
+                  Kurklinik Sonnenhof in Lützenhardt
                 </Typography>
               </Event>
               <EventLeft style={{ gridArea: "e8b" }}>
@@ -617,7 +632,8 @@ const Home = () => {
                   <li>Sensibilitätsstörungen der Nerven</li>
                   <li>Verzögerte Heilungsprozesse</li>
                   <li>Eingeschränkte Blutzirkulation</li>
-                  <li>Abwehrschwäche Ödembildung durch Lymphstau</li>
+                  <li>Abwehrschwäche</li>
+                  <li>Ödembildung durch Lymphstau</li>
                   <li>Eingeschränkte Organtätigkeit</li>
                   <li>Veränderte Verdauung</li>
                 </ul>
@@ -691,7 +707,7 @@ const Home = () => {
                 <Typography variant="body1" gutterBottom>
                   Solange Organ und Muskelfaszien gestaut sind, ist es mit der
                   Beweglichkeit nicht weit her. iXpending beinhaltet Übungen zur
-                  Faszienentstauung und mobilisation , sowie die Anleitung zur
+                  Faszienentstauung und -mobilisation , sowie die Anleitung zur
                   Eigenmobilisation von Organen.
                 </Typography>
 
@@ -906,9 +922,23 @@ const Home = () => {
           </Toolbar>
         </Container>
       </PrimaryBox>
+
+      <ScrollTop target="#back-to-top-anchor">
+        <Fab color="secondary" size="small">
+          <KeyboardArrowUp />
+        </Fab>
+      </ScrollTop>
     </>
   );
 };
+
+const SubNavbarContainer = styled(Container)`
+  padding-top: ${({ theme }) => theme.spacing(18)}px;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    padding-top: ${({ theme }) => theme.spacing(12)}px;
+  }
+`;
 
 const ImprintAppBar = styled(AppBar)`
   position: relative;
