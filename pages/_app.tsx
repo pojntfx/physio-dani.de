@@ -9,6 +9,7 @@ import { AppProps } from "next/app";
 import { useMemo } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import "mapbox-gl/dist/mapbox-gl.css";
+import "react-image-lightbox/style.css";
 
 const GlobalStyle = createGlobalStyle`
 body {
