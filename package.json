@@ -4,9 +4,9 @@
   "description": "Website for physio-dani.de.",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "next dev --port 8400",
+    "dev": "next dev --port 15400",
     "build": "next build",
-    "start": "next start --port 8400",
+    "start": "next start --port 15400",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
