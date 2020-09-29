@@ -4,6 +4,7 @@ import {
   Button,
   Container,
   Dialog,
+  Fab,
   Grid,
   IconButton,
   Link,
@@ -16,17 +17,16 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-  Fab,
 } from "@material-ui/core";
 import { TransitionProps } from "@material-ui/core/transitions/transition";
-import { Close, Menu, KeyboardArrowUp } from "@material-ui/icons";
+import { Close, KeyboardArrowUp, Menu } from "@material-ui/icons";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import NextLink from "next/link";
 import { forwardRef, useState } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { HideOnScroll } from "../components/HideOnScroll";
 import { ScrollTop } from "../components/ScrollTop";
+import { FullscreenImage } from "../components/FullscreenImage";
 
 const PrimaryAppBar = styled(AppBar)`
   background: ${({ theme }) => theme.palette.background.paper};
@@ -151,7 +151,7 @@ const InvertedSplit = styled(LeftSplit)`
   min-height: 30rem;
 `;
 
-const SplitImage = styled.img`
+const SplitImage = styled(FullscreenImage)`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -270,6 +270,12 @@ const Transition = forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+const GlobalStyle = createGlobalStyle`
+.ReactModal__Overlay {
+    z-index: 2000 !important;
+    // Higher than the Material UI App Bar
+}`;
+
 const Home = () => {
   const theme = useTheme();
   const navMenuFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -283,6 +289,7 @@ const Home = () => {
 
   return (
     <>
+      <GlobalStyle />
       <Head>
         <title>Physiotherapie Daniela Burkhardt</title>
         <meta name="author" content="Daniela Burkhardt" />
@@ -363,7 +370,6 @@ const Home = () => {
               <NavLogo
                 alt="Logo der Physiotherapie Daniela Burkhardt"
                 src="/logo.png"
-                loading="lazy"
                 onClick={() =>
                   window.scroll({
                     top: 0,
@@ -380,11 +386,7 @@ const Home = () => {
       <SubNavbarContainer maxWidth="md" id="back-to-top-anchor">
         <Grid container alignItems="center">
           <Grid item sm={12} md={4}>
-            <Avatar
-              alt="Portrait von Daniela Burkhardt"
-              src="/portrait.jpg"
-              loading="lazy"
-            />
+            <Avatar alt="Portrait von Daniela Burkhardt" src="/portrait.jpg" />
           </Grid>
 
           <Grid item sm={12} md={8}>
@@ -606,6 +608,8 @@ const Home = () => {
                 <Typography variant="body1">
                   Teil des <Focus>Anerkennungspraktikums</Focus> in der
                   neurologischen Klinik Selzer in Schönmünzach
+                  <br />
+                  <Focus>Physioschule MOTIMA</Focus> in Schwenningen
                 </Typography>
               </Event>
               <EventRight style={{ gridArea: "e9b" }}>
@@ -928,7 +932,6 @@ const Home = () => {
             <NavLogo
               alt="Logo der Physiotherapie Daniela Burkhardt"
               src="/logo.png"
-              loading="lazy"
               onClick={() =>
                 window.scroll({
                   top: 0,
