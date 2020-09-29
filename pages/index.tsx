@@ -32,8 +32,21 @@ const PrimaryAppBar = styled(AppBar)`
   background: ${({ theme }) => theme.palette.background.paper};
 `;
 
-const PrimaryBox = styled(Box)`
+const BaseBox = styled(Box)`
   background: ${({ theme }) => theme.palette.background.paper};
+`;
+
+const FirstBox = styled(BaseBox)`
+  margin-bottom: ${({ theme }) => theme.spacing(8)}px;
+`;
+
+const LastBox = styled(BaseBox)`
+  margin-top: ${({ theme }) => theme.spacing(8)}px;
+`;
+
+const PrimaryBox = styled(BaseBox)`
+  margin-top: ${({ theme }) => theme.spacing(8)}px;
+  margin-bottom: ${({ theme }) => theme.spacing(8)}px;
 `;
 
 const NavButton = styled(Button)`
@@ -406,7 +419,7 @@ const Home = () => {
         </Grid>
       </SubNavbarContainer>
 
-      <PrimaryBox component="section" id="mehr-ueber-mich">
+      <FirstBox component="section" id="mehr-ueber-mich">
         <SplitCollection>
           <Container>
             <RightSplit>
@@ -440,8 +453,8 @@ const Home = () => {
           <Container>
             <LeftSplit>
               <SplitImage
-                alt="Beispiel einer Boeger-Behandlung"
-                src="/boeger.jpg"
+                alt="Beispiel 2 einer Boeger-Behandlung"
+                src="/boeger-2.jpg"
               />
               <SplitText>
                 <Typography variant="body1" gutterBottom>
@@ -471,7 +484,7 @@ const Home = () => {
             </LeftSplit>
           </Container>
         </SplitCollection>
-      </PrimaryBox>
+      </FirstBox>
 
       <PrimaryBox component="section" id="erfahrung-und-qualifikationen">
         <SplitCollection>
@@ -658,8 +671,8 @@ const Home = () => {
                 </Typography>
               </SplitText>
               <SplitImage
-                alt="Detailaufnahme der Massage einer Hand"
-                src="/massage-hand.jpg"
+                alt="Beispiel 1 einer Boeger-Behandlung"
+                src="/boeger-1.jpg"
               />
             </RightSplit>
           </Container>
@@ -730,7 +743,7 @@ const Home = () => {
         </SplitCollection>
       </PrimaryBox>
 
-      <PrimaryBox component="section" id="kontakt-und-anfahrt">
+      <LastBox component="section" id="kontakt-und-anfahrt">
         <SplitCollection>
           <Container>
             <Typography variant="h2">Kontakt und Anfahrt</Typography>
@@ -764,9 +777,9 @@ const Home = () => {
             </InvertedSplit>
           </Container>
         </SplitCollection>
-      </PrimaryBox>
+      </LastBox>
 
-      <PrimaryBox>
+      <BaseBox>
         <Container maxWidth="lg">
           <Toolbar disableGutters>
             <>
@@ -912,16 +925,21 @@ const Home = () => {
                 </ImprintContainer>
               </Dialog>
             </>
-            <NextLink href="#">
-              <NavLogo
-                alt="Logo der Physiotherapie Daniela Burkhardt"
-                src="/logo.png"
-                loading="lazy"
-              />
-            </NextLink>
+            <NavLogo
+              alt="Logo der Physiotherapie Daniela Burkhardt"
+              src="/logo.png"
+              loading="lazy"
+              onClick={() =>
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: "smooth",
+                })
+              }
+            />
           </Toolbar>
         </Container>
-      </PrimaryBox>
+      </BaseBox>
 
       <ScrollTop target="#back-to-top-anchor">
         <Fab color="secondary" size="small">
