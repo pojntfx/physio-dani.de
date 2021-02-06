@@ -202,6 +202,7 @@ const SplitCollection = styled.div`
 const EventList = styled.div`
   display: grid;
   grid-template-areas:
+    "e0a e0a e0a e0b e0c e0c e0c"
     "e1a e1a e1a e1b e1c e1c e1c"
     "e2a e2a e2a e2b e2c e2c e2c"
     "e3a e3a e3a e3b e3c e3c e3c"
@@ -210,11 +211,13 @@ const EventList = styled.div`
     "e6a e6a e6a e6b e6c e6c e6c"
     "e7a e7a e7a e7b e7c e7c e7c"
     "e8a e8a e8a e8b e8c e8c e8c"
-    "e9a e9a e9a e9b e9c e9c e9c";
+    "e9a e9a e9a e9b e9c e9c e9c"
+    "e10a e10a e10a e10b e10c e10c e10c";
   grid-row-gap: ${({ theme }) => theme.spacing(3)}px;
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
     grid-template-areas:
+      "e0b e0c e0c e0c"
       "e1a e1a e1a e1b"
       "e2b e2c e2c e2c"
       "e3a e3a e3a e3b"
@@ -223,7 +226,8 @@ const EventList = styled.div`
       "e6b e6c e6c e6c"
       "e7a e7a e7a e7b"
       "e8b e8c e8c e8c"
-      "e9a e9a e9a e9b";
+      "e9a e9a e9a e9b"
+      "e10b e10c e10c e10c";
   }
 `;
 
@@ -261,6 +265,11 @@ const EventRightPrimary = styled(EventRight)`
 const EventLeft = styled(DatePoint)`
   border-top-left-radius: 9999px;
   border-bottom-left-radius: 9999px;
+`;
+
+const EventLeftPrimary = styled(EventLeft)`
+  background: ${({ theme }) => theme.palette.primary.main};
+  color: #ffffff;
 `;
 
 const Transition = forwardRef(function Transition(
@@ -434,7 +443,7 @@ const Home = () => {
                   1994 in Schwenningen absolviert.
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                  Ich bin 1972 in Forbach geboren und in Mitteltal im schönen
+                  1972 bin in Forbach geboren und in Mitteltal im schönen
                   Schwarzwald aufgewachsen; mein Weg bis hierher war teils
                   holprig. Trotz der vielen Aufgaben mit meinen 4 wunderbaren
                   Kindern habe ich aber nie die Liebe zur Physiotherapie
@@ -508,15 +517,23 @@ const Home = () => {
 
           <Container maxWidth="lg">
             <EventList>
+              <EventPrimary style={{ gridArea: "e0c" }}>
+                <Typography variant="body1">
+                  Ausbildung zum <Focus>Removementcoach</Focus>
+                </Typography>
+              </EventPrimary>
+              <EventLeftPrimary style={{ gridArea: "e0b" }}>
+                <Typography variant="body1">Heute</Typography>
+              </EventLeftPrimary>
+
               <EventPrimary style={{ gridArea: "e1a" }}>
                 <Typography variant="body1">
-                  Ausbildung zum <Focus>Removementcoach</Focus> und zusätzliche
-                  BT Kurse im Hinblick auf die Prüfung zum Diplom zur
-                  Boegertherapeutin in Romanshorn/Schweiz
+                  Prüfung zur <Focus>Diplom-Boegertherapeutin</Focus> in
+                  Romanshorn/Schweiz
                 </Typography>
               </EventPrimary>
               <EventRightPrimary style={{ gridArea: "e1b" }}>
-                <Typography variant="body1">Heute</Typography>
+                <Typography variant="body1">Dezember 2020</Typography>
               </EventRightPrimary>
 
               <Event style={{ gridArea: "e2c" }}>
@@ -619,6 +636,16 @@ const Home = () => {
                   1995
                 </Typography>
               </EventRight>
+
+              <Event style={{ gridArea: "e10c" }}>
+                <Typography variant="body1">
+                  <Focus>Abitur</Focus> auf dem ernährungswissenschaftlichen
+                  Gymnasium der Elise-Büchner-Schule in Freudenstadt
+                </Typography>
+              </Event>
+              <EventLeft style={{ gridArea: "e10b" }}>
+                <Typography variant="body1">1992</Typography>
+              </EventLeft>
             </EventList>
           </Container>
         </SplitCollection>
