@@ -640,7 +640,7 @@ const Home = () => {
               <Event style={{ gridArea: "e10c" }}>
                 <Typography variant="body1">
                   <Focus>Abitur</Focus> auf dem ernährungswissenschaftlichen
-                  Gymnasium der Elise-Büchner-Schule in Freudenstadt
+                  Gymnasium der Luise-Büchner-Schule in Freudenstadt
                 </Typography>
               </Event>
               <EventLeft style={{ gridArea: "e10b" }}>
