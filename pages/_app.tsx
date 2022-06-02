@@ -1,6 +1,6 @@
 import { CssBaseline, useMediaQuery } from "@material-ui/core";
 import {
-  createMuiTheme,
+  createTheme,
   MuiThemeProvider,
   StylesProvider,
 } from "@material-ui/core/styles";
@@ -31,7 +31,7 @@ const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
 
   const theme = useMemo(
     () =>
-      createMuiTheme({
+      createTheme({
         palette: {
           type: prefersDarkMode ? "dark" : "light",
           primary: {

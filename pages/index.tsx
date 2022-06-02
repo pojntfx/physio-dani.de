@@ -202,6 +202,7 @@ const SplitCollection = styled.div`
 const EventList = styled.div`
   display: grid;
   grid-template-areas:
+    "e11a e11a e11a e11b e11c e11c e11c"
     "e0a e0a e0a e0b e0c e0c e0c"
     "e1a e1a e1a e1b e1c e1c e1c"
     "e2a e2a e2a e2b e2c e2c e2c"
@@ -217,6 +218,7 @@ const EventList = styled.div`
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
     grid-template-areas:
+      "e11b e11c e11c e11c"
       "e0b e0c e0c e0c"
       "e1a e1a e1a e1b"
       "e2b e2c e2c e2c"
@@ -511,30 +513,41 @@ const Home = () => {
               bin zusätzlich selbstständig tätig in eigenen Räumen. So kommen
               doch schon einige Jahre Berufserfahrung zusammen, als
               Physiotherapeutin und sektorale Heilpraktikerin im Bereich der
-              Physiotherapie.
+              Physiotherapie. Seit 2020 habe ich mich mutig für eine eigene
+              Privatpraxis entschieden und bin dankbar und glücklich, dass ich
+              meinen erfolgreichen Traum leben darf.
             </Typography>
           </Container>
 
           <Container maxWidth="lg">
             <EventList>
+              <EventPrimary style={{ gridArea: "e11a" }}>
+                <Typography variant="body1">
+                  Ausbildung zur <Focus>Dozentin für Removement</Focus>
+                </Typography>
+              </EventPrimary>
+              <EventRightPrimary style={{ gridArea: "e11b" }}>
+                <Typography variant="body1">Heute</Typography>
+              </EventRightPrimary>
+
               <EventPrimary style={{ gridArea: "e0c" }}>
                 <Typography variant="body1">
-                  Ausbildung zum <Focus>Removementcoach</Focus>
+                  Prüfung zum <Focus>Removementcoach</Focus>
                 </Typography>
               </EventPrimary>
               <EventLeftPrimary style={{ gridArea: "e0b" }}>
-                <Typography variant="body1">Heute</Typography>
+                <Typography variant="body1">Mai 2021</Typography>
               </EventLeftPrimary>
 
-              <EventPrimary style={{ gridArea: "e1a" }}>
+              <Event style={{ gridArea: "e1a" }}>
                 <Typography variant="body1">
                   Prüfung zur <Focus>Diplom-Boegertherapeutin</Focus> in
                   Romanshorn/Schweiz
                 </Typography>
-              </EventPrimary>
-              <EventRightPrimary style={{ gridArea: "e1b" }}>
+              </Event>
+              <EventRight style={{ gridArea: "e1b" }}>
                 <Typography variant="body1">Dezember 2020</Typography>
-              </EventRightPrimary>
+              </EventRight>
 
               <Event style={{ gridArea: "e2c" }}>
                 <Typography variant="body1">
@@ -815,7 +828,7 @@ const Home = () => {
           <Toolbar disableGutters>
             <>
               <NavButton href="https://github.com/pojntfx/physio-dani.de">
-                © 2020 Daniela Burkhardt
+                © 2022 Daniela Burkhardt
               </NavButton>
               <NavButton onClick={() => setImprintOpen(true)}>
                 Impressum
