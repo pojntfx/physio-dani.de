@@ -92,6 +92,13 @@ const Focus = styled.span`
   font-weight: ${({ theme }) => theme.typography.fontWeightBold};
 `;
 
+const MobileOnly = styled.span`
+  display: none;
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    display: inline;
+  }
+`;
+
 const Highlight = styled(Focus)`
   color: ${({ theme }) => theme.typography.h2.color};
 `;
@@ -218,7 +225,7 @@ const EventList = styled.div`
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
     grid-template-areas:
-      "e11b e11c e11c e11c"
+      "e11a e11a e11a e11a"
       "e0b e0c e0c e0c"
       "e1a e1a e1a e1b"
       "e2b e2c e2c e2c"
@@ -262,6 +269,10 @@ const EventRight = styled(DatePoint)`
 const EventRightPrimary = styled(EventRight)`
   background: ${({ theme }) => theme.palette.primary.main};
   color: #ffffff;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    display: none;
+  }
 `;
 
 const EventLeft = styled(DatePoint)`
@@ -402,8 +413,7 @@ const Home = () => {
 
           <Grid item sm={12} md={8}>
             <Typography variant="body1">
-              Hallo! Willkommen bei der{" "}
-              <Highlight>Praxis für Boeger-Therapie</Highlight> von
+              Hallo! Willkommen in der <Highlight>Praxis</Highlight> von
             </Typography>
             <Name variant="h1">Daniela Burkhardt</Name>
             <Typography variant="body2">
@@ -459,21 +469,95 @@ const Home = () => {
                   </Highlight>
                 </Typography>
               </SplitText>
-              <SplitImage alt="Behandlungszimmer" src="/room.jpg" />
+              <SplitImage
+                alt="Behandlungszimmer"
+                src="/room.jpg"
+                style={{ objectPosition: "center 40%" }}
+              />
             </RightSplit>
           </Container>
 
           <Container>
-            <LeftSplit>
-              <SplitImage
-                alt="Beispiel 2 einer Boeger-Behandlung"
-                src="/boeger-2.jpg"
+            <Box style={{ padding: "2rem 0" }}>
+              <img
+                alt="PHYSION Logo"
+                src="/logo-physion.svg"
+                style={{
+                  float: "left",
+                  width: "250px",
+                  marginRight: "2rem",
+                  marginBottom: "1rem",
+                  objectFit: "contain",
+                }}
               />
+              <Typography variant="h3" gutterBottom>
+                <Highlight>Freiheit für Körper und Seele</Highlight>
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                Aus meiner gesamten Erfahrung und meiner Vielzahl von
+                Ausbildungen zusammengetragenes Wissen und Können vereint,
+                fokussiert und umgesetzt. So entstand die perfekte Fusion von
+                Physio und Emotionen. <Highlight>PHYSION</Highlight>
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                Das Leben hinterlässt viele Narben, körperliche aber auch
+                emotionale. Vielleicht haben wir auch schon etwas mitgebracht
+                oder vererbt bekommen.
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                Oft wird dann die Last zu groß, der Druck zu hoch, die
+                Verletzung zu stark oder einfach alles zuviel. Dann sitzt uns
+                plötzlich die Angst im Nacken, die Traurigkeit in der Leber oder
+                die Füße wollen nicht mehr weiterlaufen. Es schmerzt. Der Bauch,
+                der Kopf, der Rücken, das Knie… Die Organe wollen nicht mehr
+                richtig arbeiten „ich hab Schiss" „das geht mir an die Nieren"
+                „Da dreht es mir den Magen um"….
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                Eine DePRESSion drückt uns zu Boden, eine Panikattacke zieht uns
+                den Boden unter den Füßen weg, man ist „gelähmt vor Angst"
+                „verspannt". „Ich könnte ausrasten" verursacht vielleicht manche
+                Wirbelblockade.
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                <Highlight style={{ fontSize: "1.1rem" }}>
+                  Wir müssen verstehen, was uns unser Körper sagen will, nur
+                  dann haben wir eine Chance zur Heilung.
+                </Highlight>
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                Mittels PHYSION kann ich beide Ebenen befunden und behandeln.
+                Mit meinen physiotherapeutischen Techniken kombiniert mit dem
+                von mir erweiterten Removement (bilaterale
+                Hemisphärenstimulation) darf ich mit meinen Patienten
+                sensationelle Erfolge erleben. ERLEICHTERT fühlt man sich, wenn
+                die Last aus Körper und Seele entfernt ist.
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                Mein Herzensprojekt in meiner Arbeit konnte ich ebenfalls
+                erweitern und vielen Kids, Teenies, jungen Erwachsenen aus
+                emotionalen oder posttraumatischen Belastungsstörungen helfen.
+                Das freut mich sehr und motiviert mich, immer genau so weiter zu
+                machen.
+              </Typography>
+              <Typography
+                variant="body1"
+                gutterBottom
+                style={{ clear: "both" }}
+              >
+                Aus einem strahlenden Kindergesicht ein ehrliches „DANKE" ist
+                glaube ich die größte Anerkennung, die man bekommen kann!
+              </Typography>
+            </Box>
+          </Container>
+
+          <Container>
+            <RightSplit>
               <SplitText>
                 <Typography variant="body1" gutterBottom>
                   Als ich vor ein paar Jahren von einer Freundin/Kollegin auf
                   die <Highlight>Boegertherapie</Highlight> aufmerksam wurde,
-                  wusste ich schnell: “Das ist voll mein Ding!”
+                  wusste ich schnell: "Das ist voll mein Ding!"
                 </Typography>
                 <Typography variant="body1" gutterBottom>
                   Das bisherige Wissen vereint und erweitert, ein Teil meiner
@@ -494,12 +578,20 @@ const Home = () => {
                   </Focus>
                 </Typography>
               </SplitText>
-            </LeftSplit>
+              <SplitImage
+                alt="Beispiel einer Boeger-Behandlung"
+                src="/boeger-1.jpg"
+              />
+            </RightSplit>
           </Container>
         </SplitCollection>
       </FirstBox>
 
-      <PrimaryBox component="section" id="erfahrung-und-qualifikationen">
+      <PrimaryBox
+        component="section"
+        id="erfahrung-und-qualifikationen"
+        style={{ overflowX: "auto" }}
+      >
         <SplitCollection>
           <Container maxWidth="lg">
             <Typography variant="h2">Erfahrung und Qualifikationen</Typography>
@@ -523,88 +615,98 @@ const Home = () => {
             <EventList>
               <EventPrimary style={{ gridArea: "e11a" }}>
                 <Typography variant="body1">
-                  Ausbildung zur <Focus>Dozentin für Removement</Focus>
+                  <MobileOnly>Heute: </MobileOnly>In Ausbildung zur{" "}
+                  <Focus>Heilpraktikerin</Focus>
                 </Typography>
               </EventPrimary>
               <EventRightPrimary style={{ gridArea: "e11b" }}>
                 <Typography variant="body1">Heute</Typography>
               </EventRightPrimary>
 
-              <EventPrimary style={{ gridArea: "e0c" }}>
+              <Event style={{ gridArea: "e0c" }}>
+                <Typography variant="body1">
+                  <Focus>Dozentin für Removement</Focus>
+                </Typography>
+              </Event>
+              <EventLeft style={{ gridArea: "e0b" }}>
+                <Typography variant="body1">2022</Typography>
+              </EventLeft>
+
+              <Event style={{ gridArea: "e1a" }}>
                 <Typography variant="body1">
                   Prüfung zum <Focus>Removementcoach</Focus>
                 </Typography>
-              </EventPrimary>
-              <EventLeftPrimary style={{ gridArea: "e0b" }}>
+              </Event>
+              <EventRight style={{ gridArea: "e1b" }}>
                 <Typography variant="body1">Mai 2021</Typography>
-              </EventLeftPrimary>
+              </EventRight>
 
-              <Event style={{ gridArea: "e1a" }}>
+              <Event style={{ gridArea: "e2c" }}>
                 <Typography variant="body1">
                   Prüfung zur <Focus>Diplom-Boegertherapeutin</Focus> in
                   Romanshorn/Schweiz
                 </Typography>
               </Event>
-              <EventRight style={{ gridArea: "e1b" }}>
+              <EventLeft style={{ gridArea: "e2b" }}>
                 <Typography variant="body1">Dezember 2020</Typography>
-              </EventRight>
+              </EventLeft>
 
-              <Event style={{ gridArea: "e2c" }}>
+              <Event style={{ gridArea: "e3a" }}>
                 <Typography variant="body1">
                   Prüfung zur zertifizierten <Focus>Boegertherapeutin</Focus> in
                   Romanshorn/Schweiz
                 </Typography>
               </Event>
-              <EventLeft style={{ gridArea: "e2b" }}>
+              <EventRight style={{ gridArea: "e3b" }}>
                 <Typography variant="body1">2018</Typography>
-              </EventLeft>
+              </EventRight>
 
-              <Event style={{ gridArea: "e3a" }}>
+              <Event style={{ gridArea: "e4c" }}>
                 <Typography variant="body1">
                   Prüfung zur <Focus>sektoralen Heilpraktikerin</Focus> im
                   Bereich der Physiotherapie in Karlsruhe
                 </Typography>
               </Event>
-              <EventRight style={{ gridArea: "e3b" }}>
+              <EventLeft style={{ gridArea: "e4b" }}>
                 <Typography variant="body1">2012</Typography>
-              </EventRight>
+              </EventLeft>
 
-              <Event style={{ gridArea: "e4c" }}>
+              <Event style={{ gridArea: "e5a" }}>
                 <Typography variant="body1">
                   Kurs zum <Focus>Kinesiotaping</Focus> in Freiburg
                 </Typography>
               </Event>
-              <EventLeft style={{ gridArea: "e4b" }}>
+              <EventRight style={{ gridArea: "e5b" }}>
                 <Typography variant="body1">2009</Typography>
-              </EventLeft>
+              </EventRight>
 
-              <Event style={{ gridArea: "e5a" }}>
+              <Event style={{ gridArea: "e6c" }}>
                 <Typography variant="body1">
                   Prüfung zur{" "}
                   <Focus>Lymphdrainage und komplexe Entstauungstherapie</Focus>{" "}
                   und Ausbildung zur manuellen Gelenksdrainage in Offenburg
                 </Typography>
               </Event>
-              <EventRight style={{ gridArea: "e5b" }}>
+              <EventLeft style={{ gridArea: "e6b" }}>
                 <Typography variant="body1">2000</Typography>
-              </EventRight>
+              </EventLeft>
 
-              <Event style={{ gridArea: "e6c" }}>
+              <Event style={{ gridArea: "e7a" }}>
                 <Typography variant="body1">
                   <Focus>Selbstständige Tätigkeit als Physiotherapeutin</Focus>{" "}
                   in der Praxisgemeinschaft Lorenz Frey Glaser in
                   Klosterreichenbach
                 </Typography>
               </Event>
-              <EventLeft style={{ gridArea: "e6b" }}>
+              <EventRight style={{ gridArea: "e7b" }}>
                 <Typography variant="body1">
                   1998-
                   <br />
                   2000
                 </Typography>
-              </EventLeft>
+              </EventRight>
 
-              <Event style={{ gridArea: "e7a" }}>
+              <Event style={{ gridArea: "e8c" }}>
                 <Typography variant="body1">
                   Prüfung zur{" "}
                   <Focus>Brüggertherapeutin und Rückenschullehrerin</Focus> in
@@ -614,11 +716,11 @@ const Home = () => {
                   Isny/Neutrauchburg
                 </Typography>
               </Event>
-              <EventRight style={{ gridArea: "e7b" }}>
+              <EventLeft style={{ gridArea: "e8b" }}>
                 <Typography variant="body1">1999</Typography>
-              </EventRight>
+              </EventLeft>
 
-              <Event style={{ gridArea: "e8c" }}>
+              <Event style={{ gridArea: "e9a" }}>
                 <Typography variant="body1">
                   Teil des Anerkennungspraktikums, dann angestellt als
                   Physiotherapeutin und später als{" "}
@@ -626,15 +728,15 @@ const Home = () => {
                   Kurklinik Sonnenhof in Lützenhardt
                 </Typography>
               </Event>
-              <EventLeft style={{ gridArea: "e8b" }}>
+              <EventRight style={{ gridArea: "e9b" }}>
                 <Typography variant="body1">
                   1995-
                   <br />
                   1998
                 </Typography>
-              </EventLeft>
+              </EventRight>
 
-              <Event style={{ gridArea: "e9a" }}>
+              <Event style={{ gridArea: "e10c" }}>
                 <Typography variant="body1">
                   Teil des <Focus>Anerkennungspraktikums</Focus> in der
                   neurologischen Klinik Selzer in Schönmünzach
@@ -642,22 +744,12 @@ const Home = () => {
                   <Focus>Physioschule MOTIMA</Focus> in Schwenningen
                 </Typography>
               </Event>
-              <EventRight style={{ gridArea: "e9b" }}>
+              <EventLeft style={{ gridArea: "e10b" }}>
                 <Typography variant="body1">
                   1994-
                   <br />
                   1995
                 </Typography>
-              </EventRight>
-
-              <Event style={{ gridArea: "e10c" }}>
-                <Typography variant="body1">
-                  <Focus>Abitur</Focus> auf dem ernährungswissenschaftlichen
-                  Gymnasium der Luise-Büchner-Schule in Freudenstadt
-                </Typography>
-              </Event>
-              <EventLeft style={{ gridArea: "e10b" }}>
-                <Typography variant="body1">1992</Typography>
               </EventLeft>
             </EventList>
           </Container>
@@ -715,8 +807,8 @@ const Home = () => {
                 </Typography>
               </SplitText>
               <SplitImage
-                alt="Beispiel 1 einer Boeger-Behandlung"
-                src="/boeger-1.jpg"
+                alt="Hand am Arm - Boeger-Behandlung"
+                src="/boeger-2.jpg"
               />
             </RightSplit>
           </Container>
@@ -783,6 +875,30 @@ const Home = () => {
                 src="/ixpending.jpg"
               />
             </RightSplit>
+          </Container>
+
+          <Container>
+            <Typography variant="h3" gutterBottom>
+              Lymphdrainage
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              Auch aus unserem Gewebe muss der „Müll" und die liegengebliebene
+              Flüssigkeit entfernt werden. Stau ist immer schlecht. Mittels
+              sanfter Techniken wird das Lymphgefäßsystem zum Abtransport
+              aktiviert.
+            </Typography>
+          </Container>
+
+          <Container>
+            <Typography variant="h3" gutterBottom>
+              Kinesiotaping
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              Die bekannten bunten Kinesiotapes können unterstützend zur
+              Therapie eingesetzt werden. Je nach Klebetechnik kann ich den
+              Tonus der Muskulatur erhöhen, erniedrigen oder auch den
+              Lymphabfluss unterstützen.
+            </Typography>
           </Container>
         </SplitCollection>
       </PrimaryBox>
