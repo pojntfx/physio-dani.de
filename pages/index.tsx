@@ -158,10 +158,11 @@ const InvertedSplit = styled(LeftSplit)`
   min-height: 30rem;
 `;
 
-const SplitImage = styled(FullscreenImage)`
+const SplitImage = styled(FullscreenImage)<{ $objectPosition?: string }>`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: ${props => props.$objectPosition || 'center'};
 `;
 
 const SplitText = styled.div`
@@ -472,7 +473,7 @@ const Home = () => {
               <SplitImage
                 alt="Behandlungszimmer"
                 src="/room.jpg"
-                style={{ objectPosition: "center 40%" }}
+                $objectPosition="center 40%"
               />
             </RightSplit>
           </Container>
