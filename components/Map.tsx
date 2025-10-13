@@ -1,24 +1,23 @@
-import ReactMapGL, { Marker } from "react-map-gl/mapbox";
+import "maplibre-gl/dist/maplibre-gl.css";
+import { Map as MapGL, Marker } from "react-map-gl/maplibre";
 import { Pin } from "./Pin";
 
 const Map = (props: any) => {
   return (
-    <ReactMapGL
+    <MapGL
       {...props}
-      width="100%"
-      height="100%"
-      mapboxAccessToken="pk.eyJ1IjoicG9qbnRmeCIsImEiOiJjbWZnb25lNjYwMzBtMmxwdDloanpkaTZ5In0.aG9eHAQc1ZSixnwpJKhNfQ"
-      mapStyle="mapbox://styles/mapbox/streets-v9"
+      style={{ width: "100%", height: "100%" }}
+      mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
       initialViewState={{
         latitude: 48.50468,
         longitude: 8.363728,
         zoom: 15,
       }}
     >
-      <Marker latitude={48.50468} longitude={8.363728}>
+      <Marker latitude={48.50468} longitude={8.363728} anchor="bottom">
         <Pin />
       </Marker>
-    </ReactMapGL>
+    </MapGL>
   );
 };
 

@@ -8,6 +8,7 @@ export const Pin = () => {
       height={20}
       viewBox="0 0 24 24"
       style={{
+        cursor: "pointer",
         fill: theme.palette.primary.main,
         stroke: "none",
       }}

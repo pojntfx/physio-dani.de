@@ -162,7 +162,7 @@ const SplitImage = styled(FullscreenImage)<{ $objectPosition?: string }>`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: ${props => props.$objectPosition || 'center'};
+  object-position: ${(props) => props.$objectPosition || "center"};
 `;
 
 const SplitText = styled.div`
@@ -945,7 +945,7 @@ const Home = () => {
           <Toolbar disableGutters>
             <>
               <NavButton href="https://github.com/pojntfx/physio-dani.de">
-                © 2022 Daniela Burkhardt
+                © 2025 Daniela Burkhardt
               </NavButton>
               <NavButton onClick={() => setImprintOpen(true)}>
                 Impressum
