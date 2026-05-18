@@ -1,5 +1,5 @@
 import React from "react";
-import Lightbox from "react-image-lightbox";
+import Lightbox from "yet-another-react-lightbox";
 import styled from "styled-components";
 
 export interface IFullscreenImageProps {
@@ -23,13 +23,16 @@ export const FullscreenImage: React.FC<IFullscreenImageProps> = ({
         {...otherProps}
       />
 
-      {open && (
-        <Lightbox
-          mainSrc={src}
-          onCloseRequest={() => setOpen(false)}
-          imageCaption={alt}
-        />
-      )}
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        slides={[{ src, alt }]}
+        carousel={{ finite: true }}
+        render={{
+          buttonPrev: () => null,
+          buttonNext: () => null,
+        }}
+      />
     </>
   );
 };

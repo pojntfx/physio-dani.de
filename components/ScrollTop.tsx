@@ -1,4 +1,4 @@
-import { useScrollTrigger, Zoom } from "@material-ui/core";
+import { useScrollTrigger, Zoom } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 
@@ -38,6 +38,6 @@ export const ScrollTop: React.FC<IScrollTopProps> = ({
 
 const Wrapper = styled.div`
   position: fixed;
-  bottom: ${({ theme }) => theme.spacing(2)}px;
-  right: ${({ theme }) => theme.spacing(2)}px;
+  bottom: ${({ theme }) => theme.spacing(2)};
+  right: ${({ theme }) => theme.spacing(2)};
 `;

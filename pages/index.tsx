@@ -9,7 +9,7 @@ import {
   IconButton,
   Link,
   List,
-  ListItem,
+  ListItemButton,
   ListItemText,
   Slide,
   SwipeableDrawer,
@@ -17,9 +17,9 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from "@material-ui/core";
-import { TransitionProps } from "@material-ui/core/transitions/transition";
-import { Close, KeyboardArrowUp, Menu } from "@material-ui/icons";
+} from "@mui/material";
+import { TransitionProps } from "@mui/material/transitions";
+import { Close, KeyboardArrowUp, Menu } from "@mui/icons-material";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { forwardRef, useState } from "react";
@@ -28,40 +28,41 @@ import { HideOnScroll } from "../components/HideOnScroll";
 import { ScrollTop } from "../components/ScrollTop";
 import { FullscreenImage } from "../components/FullscreenImage";
 
-const PrimaryAppBar = styled(AppBar)`
-  background: ${({ theme }) => theme.palette.background.paper};
-`;
+const PrimaryAppBar = styled(AppBar).attrs({ color: "default" })``;
 
 const BaseBox = styled(Box)`
-  background: ${({ theme }) => theme.palette.background.paper};
+  background: ${({ theme }) =>
+    theme.palette.mode === "dark"
+      ? theme.palette.grey[900]
+      : theme.palette.grey[100]};
 `;
 
 const FirstBox = styled(BaseBox)`
-  margin-bottom: ${({ theme }) => theme.spacing(8)}px;
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
 `;
 
 const LastBox = styled(BaseBox)`
-  margin-top: ${({ theme }) => theme.spacing(8)}px;
+  margin-top: ${({ theme }) => theme.spacing(8)};
 `;
 
 const PrimaryBox = styled(BaseBox)`
-  margin-top: ${({ theme }) => theme.spacing(8)}px;
-  margin-bottom: ${({ theme }) => theme.spacing(8)}px;
+  margin-top: ${({ theme }) => theme.spacing(8)};
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
 `;
 
-const NavButton = styled(Button)`
+const NavButton = styled(Button).attrs({ color: "inherit" })`
   font-family: ${({ theme }) => theme.typography.h1.fontFamily};
   text-transform: ${({ theme }) => theme.typography.h1.textTransform};
   font-weight: ${({ theme }) => theme.typography.h1.fontWeight};
   letter-spacing: ${({ theme }) => theme.typography.h1.letterSpacing};
-  margin-right: ${({ theme }) => theme.spacing(1)}px;
+  margin-right: ${({ theme }) => theme.spacing(1)};
 `;
 
 const NavLogo = styled.img`
-  max-height: ${({ theme }) => theme.spacing(18)}px;
+  max-height: ${({ theme }) => theme.spacing(18)};
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
-    max-height: ${({ theme }) => theme.spacing(12)}px;
+    max-height: ${({ theme }) => theme.spacing(12)};
   }
 
   margin-left: auto;
@@ -79,11 +80,11 @@ const SliderListItemText = styled(ListItemText)`
 const Avatar = styled.img`
   max-width: 100%;
   border-radius: 50%;
-  padding: ${({ theme }) => theme.spacing(4)}px;
-  margin: ${({ theme }) => theme.spacing(6)}px 0;
+  padding: ${({ theme }) => theme.spacing(4)};
+  margin: ${({ theme }) => theme.spacing(6)} 0;
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
-    padding: ${({ theme }) => theme.spacing(7)}px;
+    padding: ${({ theme }) => theme.spacing(7)};
     margin: 0;
   }
 `;
@@ -103,22 +104,33 @@ const Highlight = styled(Focus)`
   color: ${({ theme }) => theme.typography.h2.color};
 `;
 
+const AddressLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+    color: ${({ theme }) => theme.palette.primary.main};
+  }
+`;
+
 const Name = styled(Typography)`
   padding: 0.25rem 0 0.5rem 0;
 `;
 
 const CTAs = styled.div`
-  margin-top: ${({ theme }) => theme.spacing(2)}px;
+  margin-top: ${({ theme }) => theme.spacing(2)};
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
-    margin-bottom: ${({ theme }) => theme.spacing(6)}px;
+    margin-bottom: ${({ theme }) => theme.spacing(6)};
   }
 
   display: flex;
 
   ${({ theme }) => theme.breakpoints.up("md")} {
     > *:not(:last-child) {
-      margin-right: ${({ theme }) => theme.spacing(2)}px;
+      margin-right: ${({ theme }) => theme.spacing(2)};
     }
   }
 
@@ -126,7 +138,7 @@ const CTAs = styled.div`
     flex-direction: column;
 
     > *:not(:last-child) {
-      margin-bottom: ${({ theme }) => theme.spacing(2)}px;
+      margin-bottom: ${({ theme }) => theme.spacing(2)};
     }
   }
 `;
@@ -141,7 +153,7 @@ const SplitImageWrapper = styled(Grid)`
 const LeftSplit = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-gap: ${({ theme }) => theme.spacing(2)}px;
+  grid-gap: ${({ theme }) => theme.spacing(2)};
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
     grid-template-columns: 1fr !important;
@@ -167,15 +179,15 @@ const SplitImage = styled(FullscreenImage)<{ $objectPosition?: string }>`
 
 const SplitText = styled.div`
   display: grid;
-  grid-gap: ${({ theme }) => theme.spacing(2)}px;
-  padding: ${({ theme }) => theme.spacing(4)}px;
+  grid-gap: ${({ theme }) => theme.spacing(2)};
+  padding: ${({ theme }) => theme.spacing(4)};
 
   &:last-child {
     padding-right: 0;
 
     ${({ theme }) => theme.breakpoints.down("sm")} {
       padding: 0;
-      padding-bottom: ${({ theme }) => theme.spacing(2)}px !important;
+      padding-bottom: ${({ theme }) => theme.spacing(2)} !important;
     }
   }
 
@@ -184,26 +196,26 @@ const SplitText = styled.div`
 
     ${({ theme }) => theme.breakpoints.down("sm")} {
       padding: 0;
-      padding-top: ${({ theme }) => theme.spacing(2)}px !important;
+      padding-top: ${({ theme }) => theme.spacing(2)} !important;
     }
   }
 `;
 
 const InvertedSplitText = styled.div`
   display: grid;
-  grid-gap: ${({ theme }) => theme.spacing(2)}px;
-  padding: ${({ theme }) => theme.spacing(4)}px;
+  grid-gap: ${({ theme }) => theme.spacing(2)};
+  padding: ${({ theme }) => theme.spacing(4)};
   align-items: center;
 `;
 
 const SplitCollection = styled.div`
   display: grid;
-  grid-gap: ${({ theme }) => theme.spacing(4)}px;
-  padding-top: ${({ theme }) => theme.spacing(4)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(4)}px;
+  grid-gap: ${({ theme }) => theme.spacing(4)};
+  padding-top: ${({ theme }) => theme.spacing(4)};
+  padding-bottom: ${({ theme }) => theme.spacing(4)};
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
-    grid-gap: ${({ theme }) => theme.spacing(2)}px;
+    grid-gap: ${({ theme }) => theme.spacing(2)};
   }
 `;
 
@@ -211,6 +223,7 @@ const EventList = styled.div`
   display: grid;
   grid-template-areas:
     "e11a e11a e11a e11b e11c e11c e11c"
+    "e12a e12a e12a e12b e12c e12c e12c"
     "e0a e0a e0a e0b e0c e0c e0c"
     "e1a e1a e1a e1b e1c e1c e1c"
     "e2a e2a e2a e2b e2c e2c e2c"
@@ -222,11 +235,12 @@ const EventList = styled.div`
     "e8a e8a e8a e8b e8c e8c e8c"
     "e9a e9a e9a e9b e9c e9c e9c"
     "e10a e10a e10a e10b e10c e10c e10c";
-  grid-row-gap: ${({ theme }) => theme.spacing(3)}px;
+  grid-row-gap: ${({ theme }) => theme.spacing(3)};
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
     grid-template-areas:
-      "e11a e11a e11a e11a"
+      "e11c e11c e11c e11c"
+      "e12a e12a e12a e12b"
       "e0b e0c e0c e0c"
       "e1a e1a e1a e1b"
       "e2b e2c e2c e2c"
@@ -243,7 +257,7 @@ const EventList = styled.div`
 
 const Event = styled(Box)`
   color: ${({ theme }) => theme.palette.background.paper};
-  padding: ${({ theme }) => theme.spacing(2)}px;
+  padding: ${({ theme }) => theme.spacing(2)};
   display: flex;
   align-items: center;
   background: ${({ theme }) => theme.palette.text.primary};
@@ -255,7 +269,7 @@ const EventPrimary = styled(Event)`
 `;
 
 const DatePoint = styled(Event)`
-  padding: ${({ theme }) => theme.spacing(3)}px;
+  padding: ${({ theme }) => theme.spacing(3)};
   > * {
     font-weight: ${({ theme }) => theme.typography.fontWeightBold} !important;
   }
@@ -284,19 +298,22 @@ const EventLeft = styled(DatePoint)`
 const EventLeftPrimary = styled(EventLeft)`
   background: ${({ theme }) => theme.palette.primary.main};
   color: #ffffff;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    display: none;
+  }
 `;
 
-const Transition = forwardRef(function Transition(
-  props: TransitionProps & { children?: React.ReactElement },
-  ref: React.Ref<unknown>
-) {
+const Transition = forwardRef<
+  unknown,
+  TransitionProps & { children: React.ReactElement<any, any> }
+>(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const GlobalStyle = createGlobalStyle`
-.ReactModal__Overlay {
+.yarl__portal {
     z-index: 2000 !important;
-    // Higher than the Material UI App Bar
 }`;
 
 const Home = () => {
@@ -339,16 +356,14 @@ const Home = () => {
                     onOpen={() => setNavMenuOpen(true)}
                   >
                     <List component="nav">
-                      <ListItem
-                        button
+                      <ListItemButton
                         component="a"
                         href="#mehr-ueber-mich"
                         onClick={() => setNavMenuOpen(false)}
                       >
                         <SliderListItemText>Über mich</SliderListItemText>
-                      </ListItem>
-                      <ListItem
-                        button
+                      </ListItemButton>
+                      <ListItemButton
                         component="a"
                         href="#erfahrung-und-qualifikationen"
                         onClick={() => setNavMenuOpen(false)}
@@ -356,17 +371,15 @@ const Home = () => {
                         <SliderListItemText>
                           Erfahrung und Qualifikationen
                         </SliderListItemText>
-                      </ListItem>
-                      <ListItem
-                        button
+                      </ListItemButton>
+                      <ListItemButton
                         component="a"
                         href="#leistungen"
                         onClick={() => setNavMenuOpen(false)}
                       >
                         <SliderListItemText>Leistungen</SliderListItemText>
-                      </ListItem>
-                      <ListItem
-                        button
+                      </ListItemButton>
+                      <ListItemButton
                         component="a"
                         href="#kontakt-und-anfahrt"
                         onClick={() => setNavMenuOpen(false)}
@@ -374,7 +387,7 @@ const Home = () => {
                         <SliderListItemText>
                           Kontakt und Anfahrt
                         </SliderListItemText>
-                      </ListItem>
+                      </ListItemButton>
                     </List>
                   </SwipeableDrawer>
                 </>
@@ -407,12 +420,12 @@ const Home = () => {
       </HideOnScroll>
 
       <SubNavbarContainer maxWidth="md" id="back-to-top-anchor">
-        <Grid container alignItems="center">
-          <Grid item sm={12} md={4}>
+        <Grid container sx={{ alignItems: "center" }}>
+          <Grid size={{ sm: 12, md: 4 }}>
             <Avatar alt="Portrait von Daniela Burkhardt" src="/portrait.jpg" />
           </Grid>
 
-          <Grid item sm={12} md={8}>
+          <Grid size={{ sm: 12, md: 8 }}>
             <Typography variant="body1">
               Hallo! Willkommen in der <Highlight>Praxis</Highlight> von
             </Typography>
@@ -443,7 +456,7 @@ const Home = () => {
         </Grid>
       </SubNavbarContainer>
 
-      <FirstBox component="section" id="mehr-ueber-mich">
+      <FirstBox as="section" id="mehr-ueber-mich">
         <SplitCollection>
           <Container>
             <RightSplit>
@@ -589,7 +602,7 @@ const Home = () => {
       </FirstBox>
 
       <PrimaryBox
-        component="section"
+        as="section"
         id="erfahrung-und-qualifikationen"
         style={{ overflowX: "auto" }}
       >
@@ -614,15 +627,25 @@ const Home = () => {
 
           <Container maxWidth="lg">
             <EventList>
-              <EventPrimary style={{ gridArea: "e11a" }}>
+              <EventLeftPrimary style={{ gridArea: "e11b" }}>
+                <Typography variant="body1">Heute</Typography>
+              </EventLeftPrimary>
+              <EventPrimary style={{ gridArea: "e11c" }}>
                 <Typography variant="body1">
                   <MobileOnly>Heute: </MobileOnly>In Ausbildung zur{" "}
                   <Focus>Heilpraktikerin</Focus>
                 </Typography>
               </EventPrimary>
-              <EventRightPrimary style={{ gridArea: "e11b" }}>
-                <Typography variant="body1">Heute</Typography>
-              </EventRightPrimary>
+
+              <Event style={{ gridArea: "e12a" }}>
+                <Typography variant="body1">
+                  Re-Zertifizierung <Focus>Boeger®-Therapie Update</Focus> (60
+                  Lernstunden)
+                </Typography>
+              </Event>
+              <EventRight style={{ gridArea: "e12b" }}>
+                <Typography variant="body1">Mai 2026</Typography>
+              </EventRight>
 
               <Event style={{ gridArea: "e0c" }}>
                 <Typography variant="body1">
@@ -757,7 +780,7 @@ const Home = () => {
         </SplitCollection>
       </PrimaryBox>
 
-      <PrimaryBox component="section" id="leistungen">
+      <PrimaryBox as="section" id="leistungen">
         <SplitCollection>
           <Container maxWidth="lg">
             <Typography variant="h2">Leistungen</Typography>
@@ -904,7 +927,7 @@ const Home = () => {
         </SplitCollection>
       </PrimaryBox>
 
-      <LastBox component="section" id="kontakt-und-anfahrt">
+      <LastBox as="section" id="kontakt-und-anfahrt">
         <SplitCollection>
           <Container>
             <Typography variant="h2">Kontakt und Anfahrt</Typography>
@@ -917,9 +940,15 @@ const Home = () => {
               <InvertedSplitText>
                 <div>
                   <Typography variant="body1" gutterBottom>
-                    <Focus>Höferköpfleweg 42</Focus>
-                    <br />
-                    72270 Baiersbronn
+                    <AddressLink
+                      href="https://cartes.app/?allez=42+H%25C3%25B6ferk%25C3%25B6pfleweg%252C+72270+Baiersbronn%252C+DE%7Cw89453644%7C8.36379%7C48.50477"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Focus>Höferköpfleweg 42</Focus>
+                      <br />
+                      72270 Baiersbronn
+                    </AddressLink>
                   </Typography>
                   <Typography variant="body1">
                     <Focus>Email:</Focus>{" "}
@@ -945,7 +974,7 @@ const Home = () => {
           <Toolbar disableGutters>
             <>
               <NavButton href="https://github.com/pojntfx/physio-dani.de">
-                © 2025 Daniela Burkhardt
+                © 2026 Daniela Burkhardt
               </NavButton>
               <NavButton onClick={() => setImprintOpen(true)}>
                 Impressum
@@ -955,7 +984,7 @@ const Home = () => {
                 fullScreen
                 open={imprintOpen}
                 onClose={() => setImprintOpen(false)}
-                TransitionComponent={Transition}
+                slots={{ transition: Transition }}
                 scroll="body"
               >
                 <ImprintAppBar>
@@ -1111,10 +1140,10 @@ const Home = () => {
 };
 
 const SubNavbarContainer = styled(Container)`
-  padding-top: ${({ theme }) => theme.spacing(18)}px;
+  padding-top: ${({ theme }) => theme.spacing(18)};
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
-    padding-top: ${({ theme }) => theme.spacing(12)}px;
+    padding-top: ${({ theme }) => theme.spacing(12)};
   }
 `;
 
@@ -1123,7 +1152,7 @@ const ImprintAppBar = styled(AppBar)`
 `;
 
 const ImprintHeader = styled(Typography)`
-  margin-left: ${({ theme }) => theme.spacing(2)}px;
+  margin-left: ${({ theme }) => theme.spacing(2)};
 `;
 
 const ImprintContainer = styled(Container)`

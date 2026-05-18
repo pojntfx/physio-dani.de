@@ -1,14 +1,13 @@
-import { CssBaseline, useMediaQuery } from "@material-ui/core";
-import {
-  createTheme,
-  MuiThemeProvider,
-  StylesProvider,
-} from "@material-ui/core/styles";
-import "fontsource-lato";
+import { CssBaseline, useMediaQuery } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import "fontsource-lato/index.css";
 import { AppProps } from "next/app";
 import { useMemo } from "react";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import "react-image-lightbox/style.css";
+import {
+  createGlobalStyle,
+  ThemeProvider as ScThemeProvider,
+} from "styled-components";
+import "yet-another-react-lightbox/styles.css";
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -32,7 +31,7 @@ const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
     () =>
       createTheme({
         palette: {
-          type: prefersDarkMode ? "dark" : "light",
+          mode: prefersDarkMode ? "dark" : "light",
           primary: {
             main: "#A11A3D",
           },
@@ -81,19 +80,17 @@ const App = ({ Component, pageProps }): React.ReactElement<AppProps> => {
           },
         },
       }),
-    [prefersDarkMode]
+    [prefersDarkMode],
   );
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <ThemeProvider theme={theme}>
-        <StylesProvider injectFirst>
-          <CssBaseline />
-          <GlobalStyle />
-          <Component {...pageProps} />
-        </StylesProvider>
-      </ThemeProvider>
-    </MuiThemeProvider>
+    <ThemeProvider theme={theme}>
+      <ScThemeProvider theme={theme}>
+        <CssBaseline />
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ScThemeProvider>
+    </ThemeProvider>
   );
 };
 
