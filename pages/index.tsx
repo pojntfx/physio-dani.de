@@ -639,8 +639,7 @@ const Home = () => {
 
               <Event style={{ gridArea: "e12a" }}>
                 <Typography variant="body1">
-                  Re-Zertifizierung <Focus>Boeger®-Therapie Update</Focus> (60
-                  Lernstunden)
+                  Re-Zertifizierung <Focus>Boeger®-Therapie Update</Focus>
                 </Typography>
               </Event>
               <EventRight style={{ gridArea: "e12b" }}>
