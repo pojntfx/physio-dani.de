@@ -632,8 +632,8 @@ const Home = () => {
               </EventLeftPrimary>
               <EventPrimary style={{ gridArea: "e11c" }}>
                 <Typography variant="body1">
-                  <MobileOnly>Heute: </MobileOnly>In Ausbildung zur{" "}
-                  <Focus>Heilpraktikerin</Focus>
+                  <MobileOnly>Heute: </MobileOnly>Zusätzliche Arbeit mit dem
+                  neuen <Focus>Cibionic 2.0</Focus> - „eine Idee wird Realität“
                 </Typography>
               </EventPrimary>
 
