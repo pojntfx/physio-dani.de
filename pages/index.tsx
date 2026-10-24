@@ -2,6 +2,7 @@ import {
   AppBar,
   Box,
   Button,
+  Chip,
   Container,
   Dialog,
   Fab,
@@ -12,6 +13,7 @@ import {
   ListItemButton,
   ListItemText,
   Slide,
+  Stack,
   SwipeableDrawer,
   Toolbar,
   Typography,
@@ -220,6 +222,16 @@ const SplitCollection = styled.div`
   }
 `;
 
+const CourseSplitText = styled(SplitText)`
+  align-content: start;
+`;
+
+const FlyerImage = styled(FullscreenImage)`
+  display: block;
+  width: 100%;
+  height: auto;
+`;
+
 const EventList = styled.div`
   display: grid;
   grid-template-areas:
@@ -382,6 +394,13 @@ const Home = () => {
                       </ListItemButton>
                       <ListItemButton
                         component="a"
+                        href="#kurse"
+                        onClick={() => setNavMenuOpen(false)}
+                      >
+                        <SliderListItemText>Kurse</SliderListItemText>
+                      </ListItemButton>
+                      <ListItemButton
+                        component="a"
                         href="#kontakt-und-anfahrt"
                         onClick={() => setNavMenuOpen(false)}
                       >
@@ -399,6 +418,7 @@ const Home = () => {
                     Erfahrung und Qualifikationen
                   </NavButton>
                   <NavButton href="#leistungen">Leistungen</NavButton>
+                  <NavButton href="#kurse">Kurse</NavButton>
                   <NavButton href="#kontakt-und-anfahrt">
                     Kontakt und Anfahrt
                   </NavButton>
@@ -923,6 +943,85 @@ const Home = () => {
               Tonus der Muskulatur erhöhen, erniedrigen oder auch den
               Lymphabfluss unterstützen.
             </Typography>
+          </Container>
+        </SplitCollection>
+      </PrimaryBox>
+
+      <PrimaryBox as="section" id="kurse">
+        <SplitCollection>
+          <Container maxWidth="lg">
+            <Typography variant="h2">Kurse</Typography>
+          </Container>
+
+          <Container>
+            <RightSplit>
+              <CourseSplitText>
+                <Chip
+                  label="Neu"
+                  color="primary"
+                  size="small"
+                  sx={{
+                    justifySelf: "start",
+                    fontWeight: 700,
+                    letterSpacing: "0.1rem",
+                    textTransform: "uppercase",
+                  }}
+                />
+                <Typography variant="h3" gutterBottom>
+                  Let’s RE-move!
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  Lerne bei mir REMovement anzuwenden, für dich und für andere.
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  In meinen zweitägigen Kursen lernst du die Grundlagen der
+                  Stressreduktion, die bilaterale Hemisphärenstimulation und die
+                  Welt der inneren Bilder kennen. Dazu übst du, Lasten
+                  loszulassen, Ressourcen zu stärken und REMovement praktisch
+                  anzuwenden.
+                </Typography>
+                <Typography variant="body1">
+                  Frage mich gerne, ob ein Platz in einem meiner zweitägigen
+                  Kurse frei ist.
+                </Typography>
+                <CTAs>
+                  <Button
+                    disableElevation
+                    variant="contained"
+                    color="primary"
+                    href="mailto:physio-dani@web.de?subject=Anfrage%20REMovement-Kurs"
+                  >
+                    Platz anfragen
+                  </Button>
+                </CTAs>
+              </CourseSplitText>
+              <Stack spacing={2}>
+                <Box sx={{ position: "relative" }}>
+                  <FlyerImage
+                    src="/removement-kurse.jpg"
+                    alt="Kursflyer für die zweitägigen REMovement-Kurse mit Waldweg, Steinhaufen und den Aufschriften „Let’s RE-move!“ und „Kümmere dich auch um dich“, dazu die Kursinhalte und Kontaktdaten für die Anmeldung"
+                  />
+                  <Chip
+                    label="KI-generiert"
+                    size="small"
+                    sx={{
+                      position: "absolute",
+                      top: 8,
+                      right: 8,
+                      backgroundColor: "rgba(0, 0, 0, 0.72)",
+                      color: "#ffffff",
+                      fontWeight: 700,
+                      letterSpacing: "0.08rem",
+                      textTransform: "uppercase",
+                    }}
+                  />
+                </Box>
+                <Typography variant="body2">
+                  Kursflyer. Das Bild wurde mit einem KI-Bildgenerator
+                  erstellt.
+                </Typography>
+              </Stack>
+            </RightSplit>
           </Container>
         </SplitCollection>
       </PrimaryBox>
