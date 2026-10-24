@@ -1211,6 +1211,27 @@ const Home = () => {
                     Quelle:{" "}
                     <Link href="https://www.e-recht24.de">e-recht24.de</Link>
                   </p>
+                  <h3>Bildnachweis</h3>
+                  <p>
+                    Hintergrundbild: „Vessels and glands of the lymphatic
+                    system“, Wellcome Collection, lizenziert unter{" "}
+                    <Link
+                      href="https://creativecommons.org/licenses/by/4.0/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      CC BY 4.0
+                    </Link>
+                    , farblich bearbeitet. Quelle:{" "}
+                    <Link
+                      href="https://commons.wikimedia.org/wiki/File:Vessels_and_glands_of_the_lymphatic_system;_seven_figures,_i_Wellcome_V0008037.jpg"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Wikimedia Commons
+                    </Link>
+                    .
+                  </p>
                 </ImprintContainer>
               </Dialog>
             </>
