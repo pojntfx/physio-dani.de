@@ -223,7 +223,7 @@ const SplitCollection = styled.div`
 `;
 
 const CourseSplitText = styled(SplitText)`
-  align-content: start;
+  align-content: center;
 `;
 
 const FlyerImage = styled(FullscreenImage)`
