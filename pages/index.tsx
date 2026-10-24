@@ -56,6 +56,7 @@ const NavButton = styled(Button).attrs({ color: "inherit" })`
   font-weight: ${({ theme }) => theme.typography.h1.fontWeight};
   letter-spacing: ${({ theme }) => theme.typography.h1.letterSpacing};
   margin-right: ${({ theme }) => theme.spacing(1)};
+  white-space: nowrap;
 `;
 
 const NavLogo = styled.img`
@@ -318,7 +319,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Home = () => {
   const theme = useTheme();
-  const navMenuFullscreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const navMenuFullscreen = useMediaQuery(theme.breakpoints.down("lg"));
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [imprintOpen, setImprintOpen] = useState(false);
 
