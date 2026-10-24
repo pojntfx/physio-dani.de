@@ -1,6 +1,11 @@
+import { setWorkerUrl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Map as MapGL, Marker } from "react-map-gl/maplibre";
 import { Pin } from "./Pin";
+
+setWorkerUrl(
+  new URL("maplibre-gl/dist/maplibre-gl-worker.mjs", import.meta.url).toString(),
+);
 
 const Map = (props: any) => {
   return (
